@@ -65,6 +65,13 @@ public class DecodeCompExample extends OpMode {
 
         // test color
         telemetry.addData("Color at intake is closer to", shooter.getClosestClassificationColor());
+
+        if (gamepad1.dpad_right) {
+            shooter.moveCarouselClockwise();
+        }
+        if (gamepad1.dpad_left) {
+            shooter.moveCarouselCounterClockwise();
+        }
     }
 
     public void readyIntakeSlot() {
