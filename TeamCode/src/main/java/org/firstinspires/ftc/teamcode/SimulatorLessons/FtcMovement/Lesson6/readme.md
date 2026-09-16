@@ -1,12 +1,12 @@
-# Sensors 2: Multicolor
+# Movement 6: Square
 
-[All simulator lessons](../../README.md) · [Sensors course](../readme.md)
+[All simulator lessons](../../README.md) · [Movement course](../readme.md)
 
 ## Your mission
 
-Use a color reading to select a route, then compare ways to organize the route code.
+Break a square route into straight sections and turns. Reuse a method while keeping the route easy to read.
 
-**What you are learning:** one program, different paths.
+**What you are learning:** repeated moves and methods.
 
 Open the matching challenge in [FTC Sim](https://ftcsim.org/). These lesson names follow our saved coach examples; use the simulator's displayed objective if its field or wording has changed.
 
@@ -14,43 +14,38 @@ Open the matching challenge in [FTC Sim](https://ftcsim.org/). These lesson name
 
 - **Blocks:** follow the built-in tutorial or continue your saved work. Predict a result, run it, and change one thing.
 - **Blocks → Java:** save a copy, convert with OnBot Java, and find the Java lines for two blocks you understand. Save Java edits before converting Blocks again; conversion can overwrite them.
-- **Java:** use the starter below and fill in your own route and decisions. Android Studio is an optional editor; run the challenge in FTC Sim.
+- **Java:** use the starter below and fill in your own route. Android Studio is an optional editor; run the challenge in FTC Sim.
 
 ## Try it
 
-1. Observe the panel and available gates after a reset.
-2. Record the color values, choose a condition, and build one route in small pieces.
-3. Add the other observed case and test without editing the program between cases.
-
-A sensor reads where it is now. Do not assume that 'not red' always means blue. Coach examples use particular simulated readings; observe yours before choosing a comparison. A real robot may need different thresholds.
+1. Mark each straight section and corner before coding.
+2. Test one straight section and one corner separately.
+3. Build the route from tested pieces. Only use a loop if the pieces really repeat; the final section may differ.
 
 Keep a small record: **prediction → change → observed result → next step**. If stuck, show that record to a teammate or coach. When sharing a computer, switch keyboard ownership every 5–7 minutes; each person must make and explain a change.
 
 ## Java starter for Android Studio
 
-1. In the open **FtcRobotController** project on branch **SimulatorLessons**, find `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson2`.
-2. Create a Java class named **`SensorsLesson2Starter`**. Replace the entire file with the code below, including its package line. Keep the coach's files intact.
-3. This starter builds but **does not solve or drive the course** until you fill in the TODOs. It only shows the current color readings.
-4. To run in **FTC Sim OnBot Java**, copy your code, remove the `package ...;` line from the simulator copy, and change `public class SensorsLesson2Starter` to `public class MyFIRSTJavaOpMode`. Keep `extends LinearOpMode`, imports, and helper methods. Leave the Android Studio name unchanged.
+1. In the open **FtcRobotController** project on branch **SimulatorLessons**, find `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson6`.
+2. Create a Java class named **`MovementLesson6Starter`**. Replace the entire file with the code below, including its package line. Keep the coach's files intact.
+3. This starter builds but **does not solve or drive the course** until you fill in the TODOs. The movement helper is provided; you choose when and how to call it.
+4. To run in **FTC Sim OnBot Java**, copy your code, remove the `package ...;` line from the simulator copy, and change `public class MovementLesson6Starter` to `public class MyFIRSTJavaOpMode`. Keep `extends LinearOpMode`, imports, and helper methods. Leave the Android Studio name unchanged.
 5. Save your existing simulator code before replacing it. These names and motor directions are for this simulator's robot, not a deployment recipe for our competition robot.
 
 ```java
-package org.firstinspires.ftc.teamcode.SimulatorLessons.FtcSensors.Lesson2;
+package org.firstinspires.ftc.teamcode.SimulatorLessons.FtcMovement.Lesson6;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 
-public class SensorsLesson2Starter extends LinearOpMode {
+public class MovementLesson6Starter extends LinearOpMode {
     private DcMotor motorLeft;
     private DcMotor motorRight;
-    private ColorSensor color1;
 
     @Override
     public void runOpMode() {
         motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
         motorRight = hardwareMap.get(DcMotor.class, "motorRight");
-        color1 = hardwareMap.get(ColorSensor.class, "color1");
         // Matches the simulated robot used by these coach examples.
         motorLeft.setDirection(DcMotor.Direction.REVERSE);
         waitForStart();
@@ -58,16 +53,9 @@ public class SensorsLesson2Starter extends LinearOpMode {
             return;
         }
 
-        // TODO: Travel to the panel before reading its color.
-        // TODO: Record color1.red() and color1.blue() at that location.
-        // TODO: Write your own conditions and route actions.
-        // TODO: Decide what to do if neither expected color is detected.
-
-        // This shows the CURRENT location's values, not saved panel history.
-        telemetry.addData("Red", color1.red());
-        telemetry.addData("Blue", color1.blue());
-        telemetry.update();
-        sleep(1500); // Briefly leave the readings visible.
+        // TODO: Mark each straight section and corner before coding.
+        // TODO: Add and test one movement at a time.
+        // Choose your own powers and durations; no route is supplied.
 
         stopMotors();
     }
@@ -99,16 +87,16 @@ Everyone will give a short explanation near the end of the meeting. Be ready to 
 - your goal and one part you personally changed;
 - one block and its matching Java line;
 - a prediction, the actual result, and your next step;
-- your answer to: **What evidence makes your program choose one path rather than the other?**
+- your answer to: **Which values belong inside a reusable method, and which should be arguments?**
 
 You do not have to finish the whole maze to show useful progress. Be honest about unfinished work and help you used.
 
-**Stretch:** Compare separate branches with the motor-swapping example. State its assumption about possible colors.
+**Stretch:** Compare a repeated call sequence with a loop; explain when a loop would be inappropriate.
 
 ## Coach's solutions: references you may use
 
-- [MyFIRSTJavaOpMode_Multicolor.java](MyFIRSTJavaOpMode_Multicolor.java)
-- [MyFIRSTJavaOpMode_Multicolor_2.java](MyFIRSTJavaOpMode_Multicolor_2.java)
-- [MyFIRSTJavaOpMode_Multicolor_3.java](MyFIRSTJavaOpMode_Multicolor_3.java)
+- [MyFIRSTJavaOpMode_6_Methods.java](MyFIRSTJavaOpMode_6_Methods.java)
+- [MyFIRSTJavaOpMode_6_Method_Single.java](MyFIRSTJavaOpMode_6_Method_Single.java)
+- [MyFIRSTJavaOpMode_6_WithEncoder.java](MyFIRSTJavaOpMode_6_WithEncoder.java)
 
 You may read, compare, or borrow from these examples. Point out what you borrowed, explain how it works, and test a change of your own. A working copied program is a starting point for discussion; be ready to explain the code and predict what a change will do. Examples are approaches to investigate, not a promise that every route or comment matches the current simulator.

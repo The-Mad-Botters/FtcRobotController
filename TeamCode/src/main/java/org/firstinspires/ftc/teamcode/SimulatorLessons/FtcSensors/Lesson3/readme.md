@@ -1,12 +1,12 @@
-# Sensors 2: Multicolor
+# Sensors 3: Tinted Maze
 
 [All simulator lessons](../../README.md) · [Sensors course](../readme.md)
 
 ## Your mission
 
-Use a color reading to select a route, then compare ways to organize the route code.
+Make a sensor-based choice and carry out a longer route. Use named methods to keep the choice easy to see.
 
-**What you are learning:** one program, different paths.
+**What you are learning:** separate sensing from route execution.
 
 Open the matching challenge in [FTC Sim](https://ftcsim.org/). These lesson names follow our saved coach examples; use the simulator's displayed objective if its field or wording has changed.
 
@@ -18,9 +18,9 @@ Open the matching challenge in [FTC Sim](https://ftcsim.org/). These lesson name
 
 ## Try it
 
-1. Observe the panel and available gates after a reset.
-2. Record the color values, choose a condition, and build one route in small pieces.
-3. Add the other observed case and test without editing the program between cases.
+1. Sketch possible routes and mark where you must read the panel.
+2. Test reaching the panel and record sensor readings before adding the full route.
+3. Write a separate route method for each observed case. Test each case and locate the first incorrect segment.
 
 A sensor reads where it is now. Do not assume that 'not red' always means blue. Coach examples use particular simulated readings; observe yours before choosing a comparison. A real robot may need different thresholds.
 
@@ -28,20 +28,20 @@ Keep a small record: **prediction → change → observed result → next step**
 
 ## Java starter for Android Studio
 
-1. In the open **FtcRobotController** project on branch **SimulatorLessons**, find `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson2`.
-2. Create a Java class named **`SensorsLesson2Starter`**. Replace the entire file with the code below, including its package line. Keep the coach's files intact.
+1. In the open **FtcRobotController** project on branch **SimulatorLessons**, find `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson3`.
+2. Create a Java class named **`SensorsLesson3Starter`**. Replace the entire file with the code below, including its package line. Keep the coach's files intact.
 3. This starter builds but **does not solve or drive the course** until you fill in the TODOs. It only shows the current color readings.
-4. To run in **FTC Sim OnBot Java**, copy your code, remove the `package ...;` line from the simulator copy, and change `public class SensorsLesson2Starter` to `public class MyFIRSTJavaOpMode`. Keep `extends LinearOpMode`, imports, and helper methods. Leave the Android Studio name unchanged.
+4. To run in **FTC Sim OnBot Java**, copy your code, remove the `package ...;` line from the simulator copy, and change `public class SensorsLesson3Starter` to `public class MyFIRSTJavaOpMode`. Keep `extends LinearOpMode`, imports, and helper methods. Leave the Android Studio name unchanged.
 5. Save your existing simulator code before replacing it. These names and motor directions are for this simulator's robot, not a deployment recipe for our competition robot.
 
 ```java
-package org.firstinspires.ftc.teamcode.SimulatorLessons.FtcSensors.Lesson2;
+package org.firstinspires.ftc.teamcode.SimulatorLessons.FtcSensors.Lesson3;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 
-public class SensorsLesson2Starter extends LinearOpMode {
+public class SensorsLesson3Starter extends LinearOpMode {
     private DcMotor motorLeft;
     private DcMotor motorRight;
     private ColorSensor color1;
@@ -99,16 +99,14 @@ Everyone will give a short explanation near the end of the meeting. Be ready to 
 - your goal and one part you personally changed;
 - one block and its matching Java line;
 - a prediction, the actual result, and your next step;
-- your answer to: **What evidence makes your program choose one path rather than the other?**
+- your answer to: **How can you tell whether a failure came from the color decision or the movement after it?**
 
 You do not have to finish the whole maze to show useful progress. Be honest about unfinished work and help you used.
 
-**Stretch:** Compare separate branches with the motor-swapping example. State its assumption about possible colors.
+**Stretch:** Make one route easier for a teammate to read without changing its behavior.
 
 ## Coach's solutions: references you may use
 
-- [MyFIRSTJavaOpMode_Multicolor.java](MyFIRSTJavaOpMode_Multicolor.java)
-- [MyFIRSTJavaOpMode_Multicolor_2.java](MyFIRSTJavaOpMode_Multicolor_2.java)
-- [MyFIRSTJavaOpMode_Multicolor_3.java](MyFIRSTJavaOpMode_Multicolor_3.java)
+- [MyFIRSTJavaOpMode_TintedMaze.java](MyFIRSTJavaOpMode_TintedMaze.java)
 
 You may read, compare, or borrow from these examples. Point out what you borrowed, explain how it works, and test a change of your own. A working copied program is a starting point for discussion; be ready to explain the code and predict what a change will do. Examples are approaches to investigate, not a promise that every route or comment matches the current simulator.
