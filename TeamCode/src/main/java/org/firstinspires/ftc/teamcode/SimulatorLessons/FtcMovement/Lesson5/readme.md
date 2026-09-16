@@ -1,85 +1,103 @@
-# 🧠 Lesson 5 – L-Shaped Maze & Smarter Code
+# Movement 5: L
 
-Welcome to **Lesson 5**, where your robot faces an L-shaped maze and your brain faces a coding challenge: how to write smarter, cleaner, and less headache-inducing code.
+[All simulator lessons](../../README.md) · [Movement course](../readme.md)
 
-Inside this folder, you’ll find **four Java solutions** to the same maze. They all work, but they each take a different approach. Let’s break them down and figure out which one future-you will thank you for.
+## Your mission
 
----
+Plan a route in short sections. Predict how motor power and time change each section, then turn repeated instructions into a method.
 
-## 🧪 The Four Solutions
+**What you are learning:** sequence, timing, and reusable steps.
 
-| File Name | Description | Pros | Cons |
-|----------|-------------|------|------|
-| [`MyFIRSTJavaOpMode_5L.java`](https://github.com/IndecisiveDevices/PreSeasonSandbox/blob/main/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/MyFIRSTJavaOpMode_5L.java) | The “just get it done” version. Every movement is written out manually. | Easy to follow line-by-line. Great for beginners. | Lots of repeated code. Hard to update or reuse. |
-| [`MyFIRSTJavaOpMode_5L_Functions.java`](https://github.com/IndecisiveDevices/PreSeasonSandbox/blob/main/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/MyFIRSTJavaOpMode_5L_Functions.java) | Adds custom methods like `moveForward()` and `turnLeft()`. | Cleaner, reusable, easier to tweak. | Slightly more abstract—need to understand the method names. |
-| [`MyFIRSTJavaOpMode_5L_Functions_Fewer.java`](https://github.com/IndecisiveDevices/PreSeasonSandbox/blob/main/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/MyFIRSTJavaOpMode_5L_Functions_Fewer.java) | Uses one custom method: `moveIt()` with parameters. | Super compact. Minimal duplication. | Can be harder to read. “moveIt()” is kinda vague—what does it *do* exactly? |
-| [`MyFIRSTJavaOpMode_5L_WithEncoder.java`](https://github.com/IndecisiveDevices/PreSeasonSandbox/blob/main/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/MyFIRSTJavaOpMode_5L_WithEncoder.java) | Uses motor encoders to move precise distances and turns. | Much more accurate movement! Great for real robots. | Slightly more complex code. Need to understand what an encoder is. |
+Open the matching challenge in [FTC Sim](https://ftcsim.org/). These lesson names follow our saved coach examples; use the simulator's displayed objective if its field or wording has changed.
 
----
+## Choose how to start
 
-## 🏷️ What’s an Encoder, and Why Use One?
+- **Blocks:** follow the built-in tutorial or continue your saved work. Predict a result, run it, and change one thing.
+- **Blocks → Java:** save a copy, convert with OnBot Java, and find the Java lines for two blocks you understand. Save Java edits before converting Blocks again; conversion can overwrite them.
+- **Java:** use the starter below and fill in your own route. Android Studio is an optional editor; run the challenge in FTC Sim.
 
-An **encoder** is a sensor built into your robot’s motors that counts how much the motor shaft turns—kind of like a super-precise step counter for your wheels. Instead of just guessing how far your robot moves by timing the motors, you can use encoders to measure the exact distance traveled or angle turned.
+## Try it
 
-**Why use encoders?**
+1. Sketch your route and mark a first stopping point.
+2. Use Blocks to test one section. Match a motor block and a wait block to their Java lines.
+3. In Java, add one section at a time. Choose your own powers and durations; reset before comparing trials.
 
-- **Accuracy:** Your robot moves the same distance every time, even if the battery is low or the floor is slippery.
-- **Repeatability:** You can make your robot follow the same path again and again.
-- **Smarter turns:** You can rotate your robot by a specific number of degrees, not just “about a second.”
+Keep a small record: **prediction → change → observed result → next step**. If stuck, show that record to a teammate or coach. When sharing a computer, switch keyboard ownership every 5–7 minutes; each person must make and explain a change.
 
-If you want your robot to move like a pro, encoders are the way to go!
+## Java starter for Android Studio
 
----
+1. In the open **FtcRobotController** project on branch **SimulatorLessons**, find `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5`.
+2. Create a Java class named **`MovementLesson5Starter`**. Replace the entire file with the code below, including its package line. Keep the coach's files intact.
+3. This starter builds but **does not solve or drive the course** until you fill in the TODOs. The movement helper is provided; you choose when and how to call it.
+4. To run in **FTC Sim OnBot Java**, copy your code, remove the `package ...;` line from the simulator copy, and change `public class MovementLesson5Starter` to `public class MyFIRSTJavaOpMode`. Keep `extends LinearOpMode`, imports, and helper methods. Leave the Android Studio name unchanged.
+5. Save your existing simulator code before replacing it. These names and motor directions are for this simulator's robot, not a deployment recipe for our competition robot.
 
-## 🧼 Why Clean Code Matters
+```java
+package org.firstinspires.ftc.teamcode.SimulatorLessons.FtcMovement.Lesson5;
 
-Imagine writing a recipe that says:
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
-> “Crack egg. Stir. Crack egg. Stir. Crack egg. Stir.”
+public class MovementLesson5Starter extends LinearOpMode {
+    private DcMotor motorLeft;
+    private DcMotor motorRight;
 
-Instead of:
+    @Override
+    public void runOpMode() {
+        motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
+        motorRight = hardwareMap.get(DcMotor.class, "motorRight");
+        // Matches the simulated robot used by these coach examples.
+        motorLeft.setDirection(DcMotor.Direction.REVERSE);
+        waitForStart();
+        if (isStopRequested()) {
+            return;
+        }
 
-> “Repeat: Crack and stir 3 times.”
+        // TODO: Sketch your route and mark a first stopping point.
+        // TODO: Add and test one movement at a time.
+        // Choose your own powers and durations; no route is supplied.
 
-The second one is easier to read, right? That’s what **methods** do in code—they help you avoid repeating yourself and make your instructions clearer.
+        stopMotors();
+    }
 
-Now imagine someone else has to read your code (like your teammate or future you). If your code looks like a spaghetti monster, they’ll spend more time decoding it than fixing or improving it. Clean code = happy teammates = fewer bugs = more time for snacks.
+    // Building block, not a route. Power: -1 to 1; time: seconds.
+    private void moveIt(double leftPower, double rightPower, double seconds) {
+        if (!opModeIsActive()) {
+            return;
+        }
+        motorLeft.setPower(leftPower);
+        motorRight.setPower(rightPower);
+        sleep((long) (seconds * 1000));
+        stopMotors();
+    }
 
----
+    private void stopMotors() {
+        motorLeft.setPower(0);
+        motorRight.setPower(0);
+    }
+}
+```
 
-## 🤔 Is `moveIt()` Too Generic?
+`setPower` commands a motor; `sleep` waits in milliseconds. Our helper accepts seconds and converts them. Waiting does not stop a motor—`stopMotors()` sends zero power. Timing is not an exact distance or angle measurement.
 
-Let’s talk naming. A method called `moveIt()` sounds cool, but what does it *actually* do? Move forward? Turn? Do a backflip?
+## Ready to share
 
-If you’re reading code and see `moveIt(-0.5, 0.5, 1.35)`, you might be like, “Uhh… what’s happening here?” But if you see `moveForward(1, 1100)` or `turnLeft(0.35, 1350)`, it’s instantly clear what is supposed to happen.
+Everyone will give a short explanation near the end of the meeting. Be ready to show:
 
-So while generic methods are powerful, they can be confusing if the name doesn’t tell the story. Think of method names like labels on buttons—make them obvious so anyone can press them without blowing up the robot.
+- your goal and one part you personally changed;
+- one block and its matching Java line;
+- a prediction, the actual result, and your next step;
+- your answer to: **What does sleep measure, and why is it not a distance measurement?**
 
----
+You do not have to finish the whole maze to show useful progress. Be honest about unfinished work and help you used.
 
-## 📏 Code Line Comparison – Why It Matters
+**Stretch:** Create a named movement method and explain its parameters.
 
-For this T-shaped maze, the number of lines between the four solutions isn’t wildly different. But what happens when the maze gets bigger? Let’s play a game of “What If…”
+## Coach's solutions: references you may use
 
-| Maze Scenario | Description | MyFIRSTJavaOpMode 5L | MyFIRSTJavaOpMode 5L_Methods | MyFIRSTJavaOpMode 5L_Methods_Single | MyFIRSTJavaOpMode 5L_WithEncoder |
-|---------------|-------------|------------|-------------|----------------|-------------------------------|
-| 🔹 T Maze (Lesson 5) | 3 segments + 2 turns | 43 lines | 41 lines | 39 lines | 48 lines |
-| 🟦 Square Maze | 4 straight segments + 4 turns | ~60 lines | ~46 lines | ~36 lines | ~54 lines |
-| 🌀 Helix Maze | 10 segments + 10 turns | ~120 lines | ~66 lines | ~48 lines | ~70 lines |
-| 🍦 Ice Cream Run | East Middle School → Dairy King → McDonald's (cuz I smelled fries on the way) → Back to School | ~200+ lines | ~100 lines | ~60 lines | ~110 lines |
+- [MyFIRSTJavaOpMode_5L.java](MyFIRSTJavaOpMode_5L.java)
+- [MyFIRSTJavaOpMode_5L_Methods.java](MyFIRSTJavaOpMode_5L_Methods.java)
+- [MyFIRSTJavaOpMode_5L_Method_Single.java](MyFIRSTJavaOpMode_5L_Method_Single.java)
+- [MyFIRSTJavaOpMode_5L_WithEncoder.java](MyFIRSTJavaOpMode_5L_WithEncoder.java)
 
-> 🚨 *Disclaimer: No robots were harmed in the making of this ice cream run. But they did get hungry. And yes, they dipped the fries in the ice cream.*
-
----
-
-## 🏆 Final Thoughts
-
-All four solutions work. But as you level up, you’ll want to write code that’s:
-
-- Easy to read
-- Easy to change
-- Easy to share
-
-Using methods is like giving your robot a toolbox instead of a pile of parts. And naming those tools well? That’s the difference between “mystery wrench” and “Phillips screwdriver.”
-
-So go ahead—tinker, test, and try writing your own methods. Your robot (and your future self) will thank you.
+You may read, compare, or borrow from these examples. Point out what you borrowed, explain how it works, and test a change of your own. A working copied program is a starting point for discussion; be ready to explain the code and predict what a change will do. Examples are approaches to investigate, not a promise that every route or comment matches the current simulator.

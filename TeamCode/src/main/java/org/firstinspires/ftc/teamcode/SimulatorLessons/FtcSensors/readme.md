@@ -1,36 +1,24 @@
-## 🧠 FTC Sensors – Lesson Plan  
+# FTC Sensors: choose your next challenge
 
-**Audience**: FTC Team (Grades 6–8)  
-**Style**: Asynchronous, explore-at-your-own-pace  
-**Coach Contact**: Reach out via the team website or email if you need help or just want to brag about your robot’s new superpowers.
+[Start here](../README.md) · [Open FTC Sim](https://ftcsim.org/)
 
----
+Start here when you can explain basic forward motion and turns. Learn how a reading changes the robot's next action.
 
-### 🕵️‍♂️ What’s This All About?
+## Available lesson guides
 
-Welcome to **FTC Sensors**—because once your robot knows *how* to move, it’s time to teach it *why* and *when*. These lessons introduce your robot’s sixth sense (okay, technically just sensors, but still cool). You’ll learn how to detect colors, measure distances, and make decisions based on what your robot sees and feels. It’s like giving your robot eyeballs and a brain—without the awkward teenage phase.
+Each linked guide has a goal, an Android Studio Java starter with TODOs, references, and share-out questions.
 
-This course is **recommended** after completing **FTC Movement**, but not required. That said, if your robot can’t even *get* to the spot it needs to sense, maybe give Movement a quick revisit. Just sayin’.
+| Lesson | Focus |
+|---|---|
+| [1 — Color Sense](Lesson1/readme.md) | Read a sensor before making a decision |
+| [2 — Multicolor](Lesson2/readme.md) | One program, different paths |
+| [3 — Tinted Maze](Lesson3/readme.md) | Separate sensing from route execution |
+| [4 — Pattern](Lesson4/readme.md) | Remember two readings and combine conditions |
 
----
+The simulator also lists later sensor challenges; this repository currently has local coach examples and starters for lessons 1–4. Use the built-in guidance for later challenges and ask for help when needed.
 
-### 🔍 FTC Sensors Courses 1–10
+## How to make progress
 
-| Course               | Challenge Description                                                                 |
-|----------------------|----------------------------------------------------------------------------------------|
-| 1 - Color Sense      | Use the color sensor to detect floor colors and choose the correct path.              |
-| 2 - Multicolor       | Multiple scenarios—getting to the sensor is priority #1.                              |
-| 3 - Tinted Maze      | Navigate a maze with color clues. Can you decode the path?                            |
-| 4 - Pattern          | Spot patterns and double-check your wiring—logic matters here!                        |
-| 5 - Connection       | Floor wires reveal which walls are active. Read the signs!                            |
-| 6 - Navigation       | Solo goal challenge—can your robot adapt to reach the end?                            |
-| 7 - Distance Sense   | Meet the distance sensor! React based on how close you are to obstacles.              |
-| 8 - Hook             | More distance fun—use your sensor to reach the goal smoothly.                         |
-| 9 - Entry & Exit     | Multiple walls, multiple outcomes—expand your logic to handle it all.                 |
-| 10 - Multisense      | Time to combine sensors—color + distance = robot genius.                              |
+Choose Blocks, Blocks-to-Java, or Java. Predict before running, change one thing, and keep one result to show. You may use coach solutions; explain what you borrowed and demonstrate a change you understand. Methods are optional extensions until your basic route makes sense. Encoder examples are another approach: they measure shaft rotation, not guaranteed ground distance or turning angle.
 
----
-
-### 💬 Final Notes
-
-This isn’t required work—it’s a chance to level up your robot skills and explore what makes autonomous robots tick. Whether you’re curious, confident, or just here for the cool factor, we’ll help you find the right resources to match your style. And remember: if your robot starts acting like it’s lost in a haunted maze, it might just need a little sensor love (or a Movement refresher).
+During an assigned meeting, every programmer is expected to contribute, learn, and explain their own progress to the team. Finishing more levels is not the goal; understanding and sharing your work are.
