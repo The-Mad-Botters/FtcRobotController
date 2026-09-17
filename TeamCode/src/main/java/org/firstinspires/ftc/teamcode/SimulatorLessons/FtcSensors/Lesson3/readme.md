@@ -1,112 +1,96 @@
-# Sensors 3: Tinted Maze
+# 🕶️ Sensor Lesson 3 – The Tinted Maze
 
-[All simulator lessons](../../README.md) · [Sensors course](../readme.md)
+The Tinted Maze has two possible worlds hiding in the same field. A colored panel tells your robot which world it woke up in—and which route is safe.
 
-## Your mission
+This is not just a driving challenge with a splash of paint. It is a **branching story** written in Java:
 
-Make a sensor-based choice and carry out a longer route. Use named methods to keep the choice easy to see.
+[Open FTC Sensors in FTC Sim](https://ftcsim.org/course/uczcnzpqcmc/) and choose **3 – Tinted Maze**.
 
-**What you are learning:** separate sensing from route execution.
+> If the clue is red, follow one chapter. If it is blue, follow another.
 
-Open the matching challenge in [FTC Sim](https://ftcsim.org/). These lesson names follow our saved coach examples; use the simulator's displayed objective if its field or wording has changed.
+---
 
-## Choose how to start
+## 🎯 Your Mission
 
-- **Blocks:** follow the built-in tutorial or continue your saved work. Predict a result, run it, and change one thing.
-- **Blocks → Java:** save a copy, convert with OnBot Java, and find the Java lines for two blocks you understand. Save Java edits before converting Blocks again; conversion can overwrite them.
-- **Java:** use the starter below and fill in your own route and decisions. Android Studio is an optional editor; run the challenge in FTC Sim.
+Reach the color panel, read it, and guide the robot through the matching maze to the flag.
 
-## Try it
+Sketch both routes before coding:
 
-1. Sketch possible routes and mark where you must read the panel.
-2. Test reaching the panel and record sensor readings before adding the full route.
-3. Write a separate route method for each observed case. Test each case and locate the first incorrect segment.
+- 🔴 **Red route:** Where must the robot back up, turn, and travel?
+- 🔵 **Blue route:** Which hallway and turns lead through that version?
 
-A sensor reads where it is now. Do not assume that 'not red' always means blue. Coach examples use particular simulated readings; observe yours before choosing a comparison. A real robot may need different thresholds.
+Circle any movement that both routes share. Shared moves may belong before or after the `if` statement—or inside a reusable method.
 
-Keep a small record: **prediction → change → observed result → next step**. If stuck, show that record to a teammate or coach. When sharing a computer, switch keyboard ownership every 5–7 minutes; each person must make and explain a change.
+---
 
-## Java starter for Android Studio
+## 🧠 Variables Are the Robot’s Sticky Notes
 
-1. In the open **FtcRobotController** project on branch **SimulatorLessons**, find `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson3`.
-2. Create a Java class named **`SensorsLesson3Starter`**. Replace the entire file with the code below, including its package line. Keep the coach's files intact.
-3. This starter builds but **does not solve or drive the course** until you fill in the TODOs. It only shows the current color readings.
-4. To run in **FTC Sim OnBot Java**, copy your code, remove the `package ...;` line from the simulator copy, and change `public class SensorsLesson3Starter` to `public class MyFIRSTJavaOpMode`. Keep `extends LinearOpMode`, imports, and helper methods. Leave the Android Studio name unchanged.
-5. Save your existing simulator code before replacing it. These names and motor directions are for this simulator's robot, not a deployment recipe for our competition robot.
+The sensor reading matters at one particular spot. You can save the answer so the rest of the code does not depend on the robot staying there:
+
+```java
+boolean sawRed = color1.red() > color1.blue();
+```
+
+Now `sawRed` is a tiny sticky note in the robot’s memory. It can drive away and still remember what it saw.
+
+---
+
+## 🚀 Copy/Paste Launchpad
+
+Create `MyFIRSTJavaOpMode.java`. This launchpad includes the fork in the story, but you must write both chapters.
 
 ```java
 package org.firstinspires.ftc.teamcode.SimulatorLessons.FtcSensors.Lesson3;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
-public class SensorsLesson3Starter extends LinearOpMode {
-    private DcMotor motorLeft;
-    private DcMotor motorRight;
-    private ColorSensor color1;
+public class MyFIRSTJavaOpMode extends LinearOpMode {
+    DcMotor motorLeft;
+    DcMotor motorRight;
+    ColorSensor color1;
 
     @Override
     public void runOpMode() {
         motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
         motorRight = hardwareMap.get(DcMotor.class, "motorRight");
         color1 = hardwareMap.get(ColorSensor.class, "color1");
-        // Matches the simulated robot used by these coach examples.
         motorLeft.setDirection(DcMotor.Direction.REVERSE);
+
         waitForStart();
-        if (isStopRequested()) {
-            return;
-        }
 
-        // TODO: Travel to the panel before reading its color.
-        // TODO: Record color1.red() and color1.blue() at that location.
-        // TODO: Write your own conditions and route actions.
-        // TODO: Decide what to do if neither expected color is detected.
+        // TODO: Drive the color sensor over the panel.
+        boolean sawRed = color1.red() > color1.blue();
 
-        // This shows the CURRENT location's values, not saved panel history.
-        telemetry.addData("Red", color1.red());
-        telemetry.addData("Blue", color1.blue());
+        telemetry.addData("Saw red?", sawRed);
         telemetry.update();
-        sleep(1500); // Briefly leave the readings visible.
 
-        stopMotors();
-    }
-
-    // Building block, not a route. Power: -1 to 1; time: seconds.
-    private void moveIt(double leftPower, double rightPower, double seconds) {
-        if (!opModeIsActive()) {
-            return;
+        if (sawRed) {
+            // TODO: Build the red route one move at a time.
+        } else {
+            // TODO: Build the blue route one move at a time.
         }
-        motorLeft.setPower(leftPower);
-        motorRight.setPower(rightPower);
-        sleep((long) (seconds * 1000));
-        stopMotors();
     }
 
-    private void stopMotors() {
+    private void moveIt(double leftSpeed, double rightSpeed, double seconds) {
+        motorLeft.setPower(leftSpeed);
+        motorRight.setPower(rightSpeed);
+        sleep((long) (seconds * 1000));
         motorLeft.setPower(0);
         motorRight.setPower(0);
     }
 }
 ```
 
-`setPower` commands a motor; `sleep` waits in milliseconds. Our helper accepts seconds and converts them. Waiting does not stop a motor—`stopMotors()` sends zero power. Timing is not an exact distance or angle measurement.
+---
 
-## Ready to share
+## 🧰 Coach’s Route Map
 
-Everyone will give a short explanation near the end of the meeting. Be ready to show:
+[`MyFIRSTJavaOpMode_TintedMaze.java`](./MyFIRSTJavaOpMode_TintedMaze.java) contains one complete solution with named movement methods and two branches.
 
-- your goal and one part you personally changed;
-- one block and its matching Java line;
-- a prediction, the actual result, and your next step;
-- your answer to: **How can you tell whether a failure came from the color decision or the movement after it?**
+Before copying anything, read only the method names inside each branch. Can you act out the robot’s route with your hand? If yes, the code is telling a clear story.
 
-You do not have to finish the whole maze to show useful progress. Be honest about unfinished work and help you used.
+## 🎤 Pit Huddle
 
-**Stretch:** Make one route easier for a teammate to read without changing its behavior.
-
-## Coach's solutions: references you may use
-
-- [MyFIRSTJavaOpMode_TintedMaze.java](MyFIRSTJavaOpMode_TintedMaze.java)
-
-You may read, compare, or borrow from these examples. Point out what you borrowed, explain how it works, and test a change of your own. A working copied program is a starting point for discussion; be ready to explain the code and predict what a change will do. Examples are approaches to investigate, not a promise that every route or comment matches the current simulator.
+Show both branches and answer: **What changes between the red and blue worlds, and what code stays the same?**

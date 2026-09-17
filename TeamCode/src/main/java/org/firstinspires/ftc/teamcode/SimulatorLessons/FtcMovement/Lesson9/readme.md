@@ -1,36 +1,38 @@
-# Movement 9: Around the World
+# 🌎 Lesson 9 – Around the World
 
-[All simulator lessons](../../README.md) · [Movement course](../readme.md)
+Round and round! This field has a ring, a prize in the middle, and a flag outside. Your robot needs more than a straight line—it needs a travel plan.
 
-## Your mission
+Think of it as a tiny robotic road trip: enter the circle, visit the center, get back out, and finish at the flag. No passport required. Snacks are still encouraged.
 
-Predict how a curved path changes when motor powers change sign. Use controlled experiments to plan a route.
+[Open FTC Movement in FTC Sim](https://ftcsim.org/course/fzapjibwdkf/) and choose **9 – Around the World**.
 
-**What you are learning:** forward and reverse curves.
+---
 
-Open the matching challenge in [FTC Sim](https://ftcsim.org/). These lesson names follow our saved coach examples; use the simulator's displayed objective if its field or wording has changed.
+## 🎯 Your Mission
 
-## Choose how to start
+Plan a route that reaches the important objects **without getting trapped by the inner wall**.
 
-- **Blocks:** follow the built-in tutorial or continue your saved work. Predict a result, run it, and change one thing.
-- **Blocks → Java:** save a copy, convert with OnBot Java, and find the Java lines for two blocks you understand. Save Java edits before converting Blocks again; conversion can overwrite them.
-- **Java:** use the starter below and fill in your own route. Android Studio is an optional editor; run the challenge in FTC Sim.
+Before coding, sketch arrows for three legs:
 
-## Try it
+- **Approach:** How will the robot enter the circular area?
+- **Visit:** How will it reach the center?
+- **Exit:** Can it reverse part of the route instead of making a crowded turn?
 
-1. Sketch the route and identify where a curve or reverse movement could help.
-2. Compare a pair of motor powers with both signs reversed. Predict before running.
-3. Test route sections, recording the pair of powers and time for each experiment.
+That last question matters. Sometimes the smartest forward move is actually backward.
 
-Keep a small record: **prediction → change → observed result → next step**. If stuck, show that record to a teammate or coach. When sharing a computer, switch keyboard ownership every 5–7 minutes; each person must make and explain a change.
+---
 
-## Java starter for Android Studio
+## 🧠 New Robot Skill: Undoing a Move
 
-1. In the open **FtcRobotController** project on branch **SimulatorLessons**, find `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson9`.
-2. Create a Java class named **`MovementLesson9Starter`**. Replace the entire file with the code below, including its package line. Keep the coach's files intact.
-3. This starter builds but **does not solve or drive the course** until you fill in the TODOs. The movement helper is provided; you choose when and how to call it.
-4. To run in **FTC Sim OnBot Java**, copy your code, remove the `package ...;` line from the simulator copy, and change `public class MovementLesson9Starter` to `public class MyFIRSTJavaOpMode`. Keep `extends LinearOpMode`, imports, and helper methods. Leave the Android Studio name unchanged.
-5. Save your existing simulator code before replacing it. These names and motor directions are for this simulator's robot, not a deployment recipe for our competition robot.
+If the robot drives forward into a narrow spot, running both motors backward for the right distance can retrace that path. This idea is useful far beyond FTC Sim—real autonomous routines often need to approach a game piece and then back away cleanly.
+
+Test the approach and exit as a pair. If one changes, the other may need tuning too.
+
+---
+
+## 🚀 Copy/Paste Launchpad
+
+Create `MyFIRSTJavaOpMode.java` and turn these three empty route sections into your round-the-world trip.
 
 ```java
 package org.firstinspires.ftc.teamcode.SimulatorLessons.FtcMovement.Lesson9;
@@ -38,65 +40,43 @@ package org.firstinspires.ftc.teamcode.SimulatorLessons.FtcMovement.Lesson9;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-public class MovementLesson9Starter extends LinearOpMode {
-    private DcMotor motorLeft;
-    private DcMotor motorRight;
+public class MyFIRSTJavaOpMode extends LinearOpMode {
+    DcMotor motorLeft;
+    DcMotor motorRight;
 
     @Override
     public void runOpMode() {
         motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
         motorRight = hardwareMap.get(DcMotor.class, "motorRight");
-        // Matches the simulated robot used by these coach examples.
         motorLeft.setDirection(DcMotor.Direction.REVERSE);
+
         waitForStart();
-        if (isStopRequested()) {
-            return;
-        }
 
-        // TODO: Sketch the route and identify where a curve or reverse movement could help.
-        // TODO: Add and test one movement at a time.
-        // Choose your own powers and durations; no route is supplied.
-
-        stopMotors();
+        // TODO: Approach the circular area.
+        // TODO: Visit the center.
+        // TODO: Back out safely and reach the flag.
     }
 
-    // Building block, not a route. Power: -1 to 1; time: seconds.
-    private void moveIt(double leftPower, double rightPower, double seconds) {
-        if (!opModeIsActive()) {
-            return;
-        }
-        motorLeft.setPower(leftPower);
-        motorRight.setPower(rightPower);
+    private void drive(double leftSpeed, double rightSpeed, double seconds) {
+        motorLeft.setPower(leftSpeed);
+        motorRight.setPower(rightSpeed);
         sleep((long) (seconds * 1000));
-        stopMotors();
-    }
-
-    private void stopMotors() {
         motorLeft.setPower(0);
         motorRight.setPower(0);
     }
 }
 ```
 
-`setPower` commands a motor; `sleep` waits in milliseconds. Our helper accepts seconds and converts them. Waiting does not stop a motor—`stopMotors()` sends zero power. Timing is not an exact distance or angle measurement.
+---
 
-## Ready to share
+## 🧰 Pick a Route, Then Compare
 
-Everyone will give a short explanation near the end of the meeting. Be ready to show:
+- [`MyFIRSTJavaOpMode_9_Solution.java`](./MyFIRSTJavaOpMode_9_Solution.java) uses timed motor commands and sweeping turns.
+- [`MyFIRSTJavaOpMode_9_Solution_Methods.java`](./MyFIRSTJavaOpMode_9_Solution_Methods.java) gives those same ideas readable names.
+- [`MyFIRSTJavaOpMode_9_WithEncoder.java`](./MyFIRSTJavaOpMode_9_WithEncoder.java) uses measured rotations and distances.
 
-- your goal and one part you personally changed;
-- one block and its matching Java line;
-- a prediction, the actual result, and your next step;
-- your answer to: **What changed when you reversed both motor powers, and what stayed the same?**
+The examples do not all drive the field in exactly the same style. That is the point: a good challenge can have more than one good solution.
 
-You do not have to finish the whole maze to show useful progress. Be honest about unfinished work and help you used.
+## 🎤 Pit Huddle
 
-**Stretch:** Compare timed movement with an encoder example. Encoders count shaft rotation; wheel slip can still change the actual path.
-
-## Coach's solutions: references you may use
-
-- [MyFIRSTJavaOpMode_9_Solution.java](MyFIRSTJavaOpMode_9_Solution.java)
-- [MyFIRSTJavaOpMode_9_Solution_Methods.java](MyFIRSTJavaOpMode_9_Solution_Methods.java)
-- [MyFIRSTJavaOpMode_9_WithEncoder.java](MyFIRSTJavaOpMode_9_WithEncoder.java)
-
-You may read, compare, or borrow from these examples. Point out what you borrowed, explain how it works, and test a change of your own. A working copied program is a starting point for discussion; be ready to explain the code and predict what a change will do. Examples are approaches to investigate, not a promise that every route or comment matches the current simulator.
+Point to your approach, visit, and exit code. **Which leg would you redesign if the field changed?**
