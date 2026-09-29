@@ -1,10 +1,8 @@
-package org.firstinspires.ftc.teamcode.teamcode;
+package org.firstinspires.ftc.teamcode.teamcode.graveyard.decode2025;
 
-import static android.os.SystemClock.sleep;
-
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.AprilTagsWebCam;
@@ -13,9 +11,8 @@ import org.firstinspires.ftc.teamcode.teamcode.mechanism.Lift;
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.MecanumDrive;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 
-import java.util.List;
-
 @TeleOp(name = "Tele_Decode", group = "Decode")
+@Disabled
 public class Tele_Decode extends OpMode {
     MecanumDrive driver = new MecanumDrive();
     Lift lifter = new Lift();

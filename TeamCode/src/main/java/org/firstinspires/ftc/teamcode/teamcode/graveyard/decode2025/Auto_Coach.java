@@ -1,9 +1,8 @@
-package org.firstinspires.ftc.teamcode.teamcode;
+package org.firstinspires.ftc.teamcode.teamcode.graveyard.decode2025;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.AprilTagsWebCam;
@@ -15,12 +14,12 @@ import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 import org.firstinspires.ftc.vision.apriltag.AprilTagSingleDetection;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 // Do a search for "RobotAutoDriveToAprilTagOmni.java" to see what we can copy
 // and paste it here. We have a webcam to use.
-@Autonomous(name = "Auto_Blue_ByGoal", group = "Auto Blue")
-public class Auto_Blue_ByGoal extends LinearOpMode {
+@Autonomous(name = "Auto_Coach", group = "Auto Blue")
+@Disabled
+public class Auto_Coach extends LinearOpMode {
     protected MecanumDrive driver = new MecanumDrive();
     protected Carousel carousel = new Carousel();
     protected AprilTagsWebCam aprilTagsWebCam = new AprilTagsWebCam();
@@ -31,11 +30,11 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
     //  Drive = Error * Gain    Make these values smaller for smoother control, or larger for a more aggressive response.
     final double SPEED_GAIN  =  0.02  ;   //  Forward Speed Control "Gain". e.g. Ramp up to 50% power at a 25 inch error.   (0.50 / 25.0)
     final double STRAFE_GAIN =  0.015 ;   //  Strafe Speed Control "Gain".  e.g. Ramp up to 37% power at a 25 degree Yaw error.   (0.375 / 25.0)
-    final double TURN_GAIN   =  0.015  ;   //  Turn Control "Gain".  e.g. Ramp up to 25% power at a 25 degree error. (0.25 / 25.0)
+    final double TURN_GAIN   =  0.01  ;   //  Turn Control "Gain".  e.g. Ramp up to 25% power at a 25 degree error. (0.25 / 25.0)
 
     final double MAX_AUTO_SPEED = 0.5;   //  Clip the approach speed to this max value (adjust for your robot)
     final double MAX_AUTO_STRAFE= 0.5;   //  Clip the strafing speed to this max value (adjust for your robot)
-    final double MAX_AUTO_TURN  = 0.5;   //  Clip the turn speed to this max value (adjust for your robot)
+    final double MAX_AUTO_TURN  = 0.3;   //  Clip the turn speed to this max value (adjust for your robot)
 
     // If using auto "drive to target", change this distance in front of the target you want the bot
     // to drive to in inches. example: goToTargetTagDistance(DESIRED_DISTANCE_TO_TARGET);
@@ -77,7 +76,7 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
         carousel.initialize(hardwareMap, telemetry);
 
         // Wait for driver to press start
-//        telemetry.addData("Camera preview on/off", "3 dots, Camera Stream");
+        telemetry.addData("Camera preview on/off", "3 dots, Camera Stream");
         telemetry.addData(">", "Touch START to begin now");
         telemetry.update();
     }
@@ -88,39 +87,25 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
         waitForStart();
         carousel.gotoShootingA();
         // start the shooter wheel
-        carousel.turnShooterOnOffByRpm(currentRpm - 100);
+        //carousel.turnShooterOnOffByRpm(currentRpm - 100);
 
         /// /////////////////////////////////////
         // BACK AWAY FROM GOAL
         /// ////////////////////////////////////
-        double backMovePower = -0.6;
-        moveRobot(backMovePower, 0, 0.0);
-        sleep(850);
+        moveRobot(-0.6, 0, 0.0);
+        sleep(950);
+        moveRobot(0.6, 0, 0);
+        sleep(50);
+        moveRobot(0,0,0);
+        sleep(2000);
+        goToTarget(45.5);
 
-        // controlled slowdown to reduce accidental rotation on sudden stop
-        int slowdownCounter = 200;
-        while (slowdownCounter > 0) {
-            backMovePower *= 0.75;
-            moveRobot(backMovePower, 0, 0);
-            sleep(20);
-            slowdownCounter -= 20;
-        }
+        readObelisk();
+        telemetry.addData("classificationTagId: ", classificationTagId);
+        telemetry.update();
 
         moveRobot(0, 0, 0);
         sleep(2000);
-
-        moveRobot(0, 0, 0.3);
-        sleep(1000);
-
-        moveRobot(0, 0, 0);
-
-        findClassificationIdTag();
-
-        moveRobot(0, 0, -0.3);
-        sleep(1000);
-
-        moveRobot(0, 0, 0);
-        sleep(2000); // extra wait for first shot
 
 
         carousel.turnIntakeMotorOn();
@@ -137,7 +122,7 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
         moveRobot(0.0, -0.3, 0.0);
         sleep(1000);
 
-        // then move backward to the loading zone
+        // then move forward to the loading zone
         moveRobot(0.4, 0, -0.3);
         sleep(500);
 
@@ -145,60 +130,6 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
         moveRobot(0.2, 0, 0);
         sleep(780);
 
-    }
-
-    protected void findClassificationIdTag() {
-        int retryCounter = 0;
-        // Increased the limit slightly to give more time if needed.
-        // This loop will run for a maximum of 30 * 50ms = 1.5 seconds.
-        final int RETRY_LIMIT = 30;
-
-        List<AprilTagDetection> detectedTags = null;
-
-        // This loop is the core of the retry logic.
-        // It continues as long as the OpMode is active AND we haven't exceeded our retries.
-        while (opModeIsActive() && retryCounter < RETRY_LIMIT) {
-            detectedTags = aprilTagsWebCam.getFreshDetections();
-
-            // If detections are found (not null and not empty), exit the loop.
-            if (detectedTags != null && !detectedTags.isEmpty()) {
-                telemetry.addLine("Tags detected. Processing...");
-                telemetry.update();
-                break; // Success! Exit the while loop.
-            }
-
-            // If we're still here, it means we found no tags.
-            telemetry.addData("Finding tag... Attempt", "%d / %d", retryCounter + 1, RETRY_LIMIT);
-            telemetry.update();
-
-            retryCounter++;
-            sleep(50); // Wait briefly before the next attempt to not overwhelm the CPU.
-        }
-
-        // for each tag, if the id is GREEN_PURPLE_PURPLE_TAG_ID
-
-        if (detectedTags == null) {
-            telemetry.addLine("No tags detected");
-            return;
-        }
-
-        telemetry.addLine("We have tags detected: " + detectedTags.size());
-
-        for (AprilTagDetection tag : detectedTags) {
-            if (tag instanceof AprilTagSingleDetection) {
-                AprilTagSingleDetection singleTag = (AprilTagSingleDetection) tag;
-                telemetry.addData("tag.id: ", singleTag.id);
-                if (singleTag.id == GREEN_PURPLE_PURPLE_TAG_ID ||
-                        singleTag.id == PURPLE_GREEN_PURPLE_TAG_ID ||
-                        singleTag.id == PURPLE_PURPLE_GREEN_TAG_ID) {
-                    classificationTagId = singleTag.id;
-                    return;
-                }
-            }
-        }
-
-        // This part runs if tags were seen, but none were the classification tags.
-        telemetry.addLine("WARN: Tags were visible, but none were a valid classification tag.");
     }
 
     public void moveRobot(double forward, double strafe, double turn) {
@@ -212,11 +143,48 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
         driver.drive(forward, strafe, turn);
     }
 
+    private void readObelisk(){
+        // rotate to look at april tag
+        moveRobot(0, 0, 0.3);
+        sleep(890);
+
+        moveRobot(0,0, 0);
+        sleep(500);
+
+        List<AprilTagDetection> detectedTags = aprilTagsWebCam.getFreshDetections();
+
+        // for each tag, if the id is GREEN_PURPLE_PURPLE_TAG_ID
+
+        if (detectedTags == null) {
+            telemetry.addLine("No tags detected");
+            sleep(5000);
+        } else {
+            telemetry.addLine("We have tags detected: " + detectedTags.size());
+            sleep(5000);
+            for (AprilTagDetection tag : detectedTags) {
+                if (tag instanceof AprilTagSingleDetection) {
+                    AprilTagSingleDetection singleTag = (AprilTagSingleDetection) tag;
+                    telemetry.addData("tag.id: ", singleTag.id);
+                    if (singleTag.id == GREEN_PURPLE_PURPLE_TAG_ID ||
+                            singleTag.id == PURPLE_GREEN_PURPLE_TAG_ID ||
+                            singleTag.id == PURPLE_PURPLE_GREEN_TAG_ID) {
+                        classificationTagId = singleTag.id;
+                        break;
+                    }
+                }
+
+                sleep(500);
+            }
+        }
+        // rotate to look at april tag
+        moveRobot(0, 0, -0.3);
+        sleep(890);
+    }
+
     public void shootAtTargetTag() {
 
         // Now that we set the classification tag id, we can shoot.
         telemetry.addLine("Getting ready to shoot in 3 seconds");
-
         if (classificationTagId == GREEN_PURPLE_PURPLE_TAG_ID) {
             shootGreen();
             shootPurpleOne();
@@ -228,6 +196,7 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
         } else { // is either PURPLE_PURPLE_GREEN_TAG_ID or the default if classificationId not found
             shootPurpleOne();
             shootPurpleTwo();
+            carousel.setShooterRPM(currentRpm);
             shootGreen();
         }
     }
@@ -240,7 +209,7 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
     private void shootGreen() {
         carousel.gotoShootingA();
         sleep(SLEEP_AFTER_POSITIONS);
-        waitForRpm();
+        telemetry.addLine(" RPM:" + carousel.getShooterRPM());
         useKicker();
         sleep(SLEEP_AFTER_SHOOT);
     }
@@ -249,8 +218,9 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
     private void shootPurpleOne() {
         carousel.gotoShootingB();
         sleep(SLEEP_AFTER_POSITIONS);
-        waitForRpm();
+        telemetry.addLine(" RPM:" + carousel.getShooterRPM());
         useKicker();
+        carousel.setShooterRPM(currentRpm - 100); // TEMP
         sleep(SLEEP_AFTER_SHOOT);
     }
 
@@ -258,6 +228,7 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
     private void shootPurpleTwo() {
         carousel.gotoShootingX();
         sleep(SLEEP_AFTER_POSITIONS);
+        telemetry.addLine(" RPM:" + carousel.getShooterRPM());
         useKicker();
         sleep(SLEEP_AFTER_SHOOT);
     }
@@ -265,26 +236,26 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
     // Sets carousel.kick position to 1.0 for 1 second.
     // then sets kick position to 0.0 and sleeps for 1 second
     private void useKicker() {
-        waitForRpm();
         carousel.kick(1.0);
         sleep(SLEEP_AFTER_KICK);
         carousel.kick(0.0);
         sleep(SLEEP_AFTER_KICK);
     }
 
-
     double distanceToTarget = 0;
 
     private void goToTarget(double desiredDistance) {
+        boolean targetFound = false;
+        AprilTagDetection desiredTag = null;
         while (opModeIsActive())
         {
-            boolean targetFound = false;
-
+            targetFound = false;
+            desiredTag  = null;
             double drive;
             double turn;
             double strafe;
 
-//            aprilTagsWebCam.update();
+            aprilTagsWebCam.update();
             AprilTagDetection targetTag = aprilTagsWebCam.getTagBySpecificId(SHOOTING_TARGET_TAG_ID);
 
             if (targetTag == null) {
@@ -292,10 +263,43 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
             } else {
                 if (targetTag.ftcPose != null) {
                     distanceToTarget = targetTag.ftcPose.range;
-                    targetFound = true;
-                    aprilTagsWebCam.displayDetectionTelemetry(targetTag);
                 }
+                targetFound = true;
+                aprilTagsWebCam.displayDetectionTelemetry(targetTag);
             }
+
+//            // Step through the list of detected tags and look for a matching tag
+//            List<AprilTagDetection> currentDetections = aprilTagsWebCam.getDetectedTags();
+//
+//            for (AprilTagDetection detection : currentDetections) {
+//                // Look to see if we have size info on this tag.
+//                if (detection.metadata != null) {
+//                    //  Check to see if we want to track towards this tag.
+//                    if ((SHOOTING_TARGET_TAG_ID < 0) || (detection.id == SHOOTING_TARGET_TAG_ID)) {
+//                        // Yes, we want to use this tag.
+//                        targetFound = true;
+//                        desiredTag = detection;
+//                        break;  // don't look any further.
+//                    } else {
+//                        // This tag is in the library, but we do not want to track it right now.
+//                        telemetry.addData("Skipping", "Tag ID %d is not desired", detection.id);
+//                    }
+//                } else {
+//                    // This tag is NOT in the library, so we don't have enough information to track to it.
+//                    telemetry.addData("Unknown", "Tag ID %d is not in TagLibrary", detection.id);
+//                }
+//            }
+
+//            // Tell the driver what we see, and what to do.
+//            if (targetFound) {
+//                telemetry.addData("\n>","HOLD Left-Bumper to Drive to Target\n");
+//                telemetry.addData("Found", "ID %d (%s)", desiredTag.id, desiredTag.metadata.name);
+//                telemetry.addData("Range",  "%5.1f inches", desiredTag.ftcPose.range);
+//                telemetry.addData("Bearing","%3.0f degrees", desiredTag.ftcPose.bearing);
+//                telemetry.addData("Yaw","%3.0f degrees", desiredTag.ftcPose.yaw);
+//            } else {
+//                telemetry.addData("\n>","Drive using joysticks to find valid target\n");
+//            }
 
             // If Left Bumper is being pressed, AND we have found the desired target, Drive to target Automatically .
             if (targetFound) {
@@ -333,84 +337,11 @@ public class Auto_Blue_ByGoal extends LinearOpMode {
         }
     }
 
-
-    /**
-     * Rotates the robot to center on the specified AprilTag without driving forward or backward.
-     * The robot will turn until the tag is directly in front of it (headingError is minimal).
-     */
-    double centerOffSet = 0;
-
-    protected void centerOnTarget() {
-        ElapsedTime timer = new ElapsedTime();
-        double timeoutMs = 500;
-
-        while (opModeIsActive())
-        {
-            // set a default exposure if we
-            if (timer.milliseconds() > timeoutMs) {
-                moveRobot(0,0,0);
-                return;
-            }
-
-            boolean targetFound = false;
-            double turn = 0;
-
-            // First, get the most recent tag data
-            aprilTagsWebCam.update();
-            AprilTagDetection targetTag = aprilTagsWebCam.getTagBySpecificId(SHOOTING_TARGET_TAG_ID);
-
-            if (targetTag == null) {
-                telemetry.addData("Tag NOt Detected", SHOOTING_TARGET_TAG_ID);
-            } else {
-                if (targetTag.ftcPose != null) {
-                    targetFound = true;
-                    aprilTagsWebCam.displayDetectionTelemetry(targetTag);
-                }
-            }
-
-            // If Left Bumper is being pressed, AND we have found the desired target, Drive to target Automatically .
-            if (targetFound) {
-
-                // The 'bearing' or 'headingError' is the angle we need to correct.
-                // A positive value means the tag is to our right, so we need to turn right.
-                // A negative value means the tag is to our left, so we need to turn left.
-                double headingError = targetTag.ftcPose.bearing - centerOffSet; // blue
-
-                // Use the speed and turn "gains" to calculate how we want the robot to move.
-                turn   = Range.clip(headingError * TURN_GAIN, -MAX_AUTO_TURN, MAX_AUTO_TURN) ;
-
-                // Stop turning if we are centered (e.g., within 2 degrees).
-                // This prevents the robot from jittering back and forth.
-                final double HEADING_TOLERANCE = 0.5; // degrees
-                if (Math.abs(headingError) <= HEADING_TOLERANCE) {
-                    telemetry.addLine("Centered on Target!");
-                    driver.drive(0, 0, 0); // Stop turning
-                    return; // We are centered, so we're done.
-                }
-                telemetry.addLine("Centering...");
-            }
-
-            telemetry.update();
-
-            // Apply this as the moveRobot is already accounting for the inverse
-            // for other movements. But the centering code actually sets the correct
-            // value. So we need to inverse before the inverse!!
-            if (SHOOTING_TARGET_TAG_ID == RED_TAG_ID) {
-                turn = -turn;
-            }
-            moveRobot(0, 0, -turn);
-            sleep(10);
-        }
-
-    }
-
     private void waitForRpm(){
         while (!carousel.targetRpmReached()) {
-            telemetry.addData("Target RPM", currentRpm );
-            telemetry.addData("Current RPM", carousel.getShooterRPM());
+            telemetry.addLine("Waiting to reach target RPM: ");
             telemetry.update();
             sleep(100);
         }
     }
-
 }
