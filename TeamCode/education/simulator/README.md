@@ -26,7 +26,7 @@ Check out the [FTC Login and Basic Info PDF](ftcSim.pdf) for important log in an
 4. Choose your course: **FTC Movement** or **FTC Sensors**.
 5. Follow the built-in tutorials—they’re like cheat codes for your brain.
 
-> 💡 **Tip**: Start with [FTC Movement](../../TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/readme.md). It teaches your robot how to move, which is kind of important if you want it to *get to* the thing it’s supposed to sense. Once you’ve mastered movement, jump into [FTC Sensors](../../TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/readme.md) to give your robot some superpowers.
+> 💡 **Tip**: Start with [FTC Movement](../../src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/readme.md). It teaches your robot how to move, which is kind of important if you want it to *get to* the thing it’s supposed to sense. Once you’ve mastered movement, jump into [FTC Sensors](../../src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/readme.md) to give your robot some superpowers.
 
 ---
 
@@ -44,8 +44,8 @@ Check out the [FTC Login and Basic Info PDF](ftcSim.pdf) for important log in an
 
 This repo is organized into two main folders:
 
-- 🧭 [**FtcMovement**](../../TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/readme.md): Teaches your robot how to move like it’s got somewhere to be.
-- 🕵️‍♂️ [**FtcSensors**](../../TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/readme.md): Gives your robot the ability to *sense* things—colors, distances, and more.
+- 🧭 [**FtcMovement**](../../src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/readme.md): Teaches your robot how to move like it’s got somewhere to be.
+- 🕵️‍♂️ [**FtcSensors**](../../src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/readme.md): Gives your robot the ability to *sense* things—colors, distances, and more.
 
 Each folder contains:
 
@@ -73,4 +73,4 @@ You’re not just programming a robot. You’re building problem-solving superpo
 
 These examples compile in Android Studio under `org.firstinspires.ftc.teamcode.education.simulator`. To paste an example into FTC Sim, use the simulator-required class name `MyFIRSTJavaOpMode` (including any constructor or self-references) and its editor's required package declaration rather than the repository package. Use the existing course guide and simulator editor as the authority for the selected environment.
 
-Additional examples: [VRS strafing guide](../../TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/strafing/README.md) and [DECODE competition-field example](../../TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/competitionfield/decode/MyFIRSTJavaOpMode_DECODE.java). The VRS lesson is a separate simulator archive; its earlier lessons and screenshot were not included in the source branch.
+Additional examples: [VRS strafing guide](../../src/main/java/org/firstinspires/ftc/teamcode/education/simulator/strafing/README.md) and [DECODE competition-field example](../../src/main/java/org/firstinspires/ftc/teamcode/education/simulator/competitionfield/decode/MyFIRSTJavaOpMode_DECODE.java). The VRS lesson is a separate simulator archive; its earlier lessons and screenshot were not included in the source branch.
