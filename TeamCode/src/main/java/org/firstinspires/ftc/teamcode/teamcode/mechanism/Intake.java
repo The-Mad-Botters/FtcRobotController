@@ -7,15 +7,11 @@ public class Intake {
     DcMotor intakeMotor;
 
     public void init(HardwareMap hardwareMap) {
-        intakeMotor = hardwareMap.get(DcMotor.class, "intakemotor");
+        intakeMotor = hardwareMap.get(DcMotor.class, "IM");
         intakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-    public void turnOn(boolean turnOnYN) {
-        if (turnOnYN) {
-            intakeMotor.setPower(1.0);
-        } else {
-            intakeMotor.setPower(0.0);
-        }
+    public void setPower(double power) {
+        intakeMotor.setPower(power);
     }
 }

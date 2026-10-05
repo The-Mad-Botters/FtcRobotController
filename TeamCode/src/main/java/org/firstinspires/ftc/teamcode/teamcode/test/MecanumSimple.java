@@ -11,7 +11,7 @@ public class MecanumSimple extends OpMode {
 
     @Override
     public void init() {
-        driver.initialize(hardwareMap, "FL","FR","RL","RR");
+        driver.initialize(hardwareMap);
     }
 
     @Override
