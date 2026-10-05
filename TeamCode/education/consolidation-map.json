@@ -1,0 +1,247 @@
+[
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/CompetitionField/DECODE/MyFIRSTJavaOpMode_DECODE.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/competitionfield/decode/MyFIRSTJavaOpMode_DECODE.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson10/MyFIRSTJavaOpMode_10_Solution.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson10/MyFIRSTJavaOpMode_10_Solution.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson10/MyFIRSTJavaOpMode_10_Solution_Methoda.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson10/MyFIRSTJavaOpMode_10_Solution_Methoda.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson10/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson10/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/MyFIRSTJavaOpMode_5L.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson5/MyFIRSTJavaOpMode_5L.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/MyFIRSTJavaOpMode_5L_Method_Single.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson5/MyFIRSTJavaOpMode_5L_Method_Single.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/MyFIRSTJavaOpMode_5L_Methods.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson5/MyFIRSTJavaOpMode_5L_Methods.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/MyFIRSTJavaOpMode_5L_WithEncoder.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson5/MyFIRSTJavaOpMode_5L_WithEncoder.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson5/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson5/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson6/MyFIRSTJavaOpMode_6_Method_Single.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson6/MyFIRSTJavaOpMode_6_Method_Single.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson6/MyFIRSTJavaOpMode_6_Methods.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson6/MyFIRSTJavaOpMode_6_Methods.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson6/MyFIRSTJavaOpMode_6_WithEncoder.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson6/MyFIRSTJavaOpMode_6_WithEncoder.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson6/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson6/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson7/MyFIRSTJavaOpMode_7_Method_Single.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson7/MyFIRSTJavaOpMode_7_Method_Single.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson7/MyFIRSTJavaOpMode_7_Methods.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson7/MyFIRSTJavaOpMode_7_Methods.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson7/MyFIRSTJavaOpMode_7_WithEncoder.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson7/MyFIRSTJavaOpMode_7_WithEncoder.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson7/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson7/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson8/MyFIRSTJavaOpMode_8_Solution.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson8/MyFIRSTJavaOpMode_8_Solution.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson8/MyFIRSTJavaOpMode_8_Solution_Methods.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson8/MyFIRSTJavaOpMode_8_Solution_Methods.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson8/MyFIRSTJavaOpMode_8_WithEncoder.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson8/MyFIRSTJavaOpMode_8_WithEncoder.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson8/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson8/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson9/MyFIRSTJavaOpMode_9_Solution.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson9/MyFIRSTJavaOpMode_9_Solution.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson9/MyFIRSTJavaOpMode_9_Solution_Methods.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson9/MyFIRSTJavaOpMode_9_Solution_Methods.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson9/MyFIRSTJavaOpMode_9_WithEncoder.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson9/MyFIRSTJavaOpMode_9_WithEncoder.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/Lesson9/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/lesson9/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcMovement/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/movement/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson1/MyFIRSTJavaOpMode_Color_Sensor.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson1/MyFIRSTJavaOpMode_Color_Sensor.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson1/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson1/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson2/MyFIRSTJavaOpMode_Multicolor.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson2/MyFIRSTJavaOpMode_Multicolor.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson2/MyFIRSTJavaOpMode_Multicolor_2.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson2/MyFIRSTJavaOpMode_Multicolor_2.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson2/MyFIRSTJavaOpMode_Multicolor_3.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson2/MyFIRSTJavaOpMode_Multicolor_3.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson2/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson2/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson3/MyFIRSTJavaOpMode_TintedMaze.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson3/MyFIRSTJavaOpMode_TintedMaze.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson3/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson3/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson4/MyFIRSTJavaOpMode_Pattern.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson4/MyFIRSTJavaOpMode_Pattern.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson4/MyFIRSTJavaOpMode_Pattern_WithEncoder.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson4/MyFIRSTJavaOpMode_Pattern_WithEncoder.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/Lesson4/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/lesson4/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/FtcSensors/readme.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/sensors/readme.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/README.md",
+    "destination": "education/simulator/README.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/Strafing/Lesson3_strafe_starter.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/strafing/Lesson3_strafe_starter.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/Strafing/Lesson3_strafe_the_solution.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/strafing/Lesson3_strafe_the_solution.java"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/Strafing/README.md",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/simulator/strafing/README.md"
+  },
+  {
+    "ref": "a9047301a1f6ef4c9414344b9774869d7e14b15c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/SimulatorLessons/ftcSim.pdf",
+    "destination": "education/simulator/ftcSim.pdf"
+  },
+  {
+    "ref": "ee6f1607e5604cfccfc24e248891270ae2337e0c",
+    "source": "TeamCode/FTC-Workshop/ComponentsDiagram.png",
+    "destination": "education/workshop/ComponentsDiagram.png"
+  },
+  {
+    "ref": "ee6f1607e5604cfccfc24e248891270ae2337e0c",
+    "source": "TeamCode/FTC-Workshop/code-tank-drive-walkthrough-draft.pdf",
+    "destination": "education/workshop/code-tank-drive-walkthrough-draft.pdf"
+  },
+  {
+    "ref": "ee6f1607e5604cfccfc24e248891270ae2337e0c",
+    "source": "TeamCode/FTC-Workshop/java_primer.html",
+    "destination": "education/java-primer/java_primer.html"
+  },
+  {
+    "ref": "ee6f1607e5604cfccfc24e248891270ae2337e0c",
+    "source": "TeamCode/FTC-Workshop/tank-drive-coding-walkthrough.html",
+    "destination": "education/workshop/tank-drive-coding-walkthrough.html"
+  },
+  {
+    "ref": "ee6f1607e5604cfccfc24e248891270ae2337e0c",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/workshop/TankDrive_Tutorial_Start.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/workshop/tankdrive/TankDrive_Tutorial_Start.java"
+  },
+  {
+    "ref": "9ff2b6993d8a6be4d7d4765a2e2098efbf5e82cf",
+    "source": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/teamcode/test/TankDrive_Complete.java",
+    "destination": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/education/workshop/tankdrive/TankDrive_Complete.java"
+  }
+]

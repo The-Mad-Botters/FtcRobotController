@@ -378,7 +378,6 @@
   <main class="handout">
     <section class="page">
       <header>
-        <img class="logo" src="indecisive-devices-logo.png" alt="Indecisive Devices robot logo" />
         <div>
           <h1>How to Code a Tank Drive</h1>
           <div class="subtitle">FTC Team #22738 Indecisive Devices - Workshop TeleOp walkthrough</div>
@@ -409,8 +408,10 @@
       <div class="card gold starter-card">
         <span class="label">Start here</span>
         <h2>Open the starter file</h2>
-        <p>In Android Studio, go to <span class="pill">TankDrive_Tutorial_Start.java</span>. Before typing new motor code, confirm the starter code looks like this:</p>
-        <div class="code">@TeleOp(name = "{your name} - Tank Drive", group = "Workshop")
+        <p>Workshop examples are disabled by default. For a supervised workshop, remove <code>@Disabled</code> from your working copy to make it appear on the Driver Station. Restore it afterward.</p>
+        <p>In Android Studio, go to <span class="pill">TeamCode</span> &rarr; <span class="pill">org.firstinspires.ftc.teamcode.education.workshop.tankdrive</span> &rarr; <span class="pill">TankDrive_Tutorial_Start.java</span>. Before typing new motor code, confirm the starter code looks like this:</p>
+        <div class="code">@Disabled
+@TeleOp(name = "{your name} - Tank Drive", group = "Workshop")
 public class TankDrive_Tutorial_Start extends OpMode {
     private DcMotor frontLeftDrive;
 
@@ -481,7 +482,6 @@ public class TankDrive_Tutorial_Start extends OpMode {
 
     <section class="page">
       <header>
-        <img class="logo" src="indecisive-devices-logo.png" alt="Indecisive Devices robot logo" />
         <div>
           <h1>Connect Code to Motors</h1>
           <div class="subtitle">First we give each motor a Java name, then we connect it to the robot hardware map.</div>
@@ -562,7 +562,6 @@ rearLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);</div>
 
     <section class="page page-drive">
       <header>
-        <img class="logo" src="indecisive-devices-logo.png" alt="Indecisive Devices robot logo" />
         <div>
           <h1>Make the Wheels Respond</h1>
           <div class="subtitle">Now the robot can read joysticks and send power to the motors.</div>
@@ -642,7 +641,6 @@ telemetry.addData("Right Power", rightPower);</div>
 
     <section class="page">
       <header>
-        <img class="logo" src="indecisive-devices-logo.png" alt="Indecisive Devices robot logo" />
         <div>
           <h1>Build, Check, Drive</h1>
           <div class="subtitle">Use this page to compare your finished code and fix common tiny mistakes.</div>
@@ -698,13 +696,15 @@ telemetry.addData("Right Power", rightPower);</div>
       <div class="card gold">
         <h2>Finished code checkpoint</h2>
         <p>This is the full shape of the example. Your class name may be different if you are still using the starter file.</p>
-        <div class="code tight">package org.firstinspires.ftc.teamcode.teamcode;
+        <div class="code tight">package org.firstinspires.ftc.teamcode.education.workshop.tankdrive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+@Disabled
 @TeleOp(name = "{your name} - Tank Drive", group = "Workshop")
 public class TankDrive_Tutorial_Start extends OpMode {
     private DcMotor frontLeftDrive;

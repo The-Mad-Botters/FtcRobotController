@@ -1,10 +1,12 @@
-package org.firstinspires.ftc.teamcode.teamcode.test;
+package org.firstinspires.ftc.teamcode.education.workshop.tankdrive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+@Disabled
 @TeleOp(name = "Ed - Tank Drive Example", group = "Workshop")
 public class TankDrive_Complete extends OpMode {
     private DcMotor frontLeftDrive;

@@ -6,8 +6,9 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 public class MecanumDrive {
-    private HardwareMap hardwareMap;
 
     // Drive Motors
     public DcMotor frontLeftDrive, frontRightDrive, rearLeftDrive, rearRightDrive;
@@ -15,23 +16,11 @@ public class MecanumDrive {
     // can be used to determine robot orientation (gyro)
     private IMU imu;
 
-    public void initialize(HardwareMap hardwareMap, String frontLeftMotorName, String frontRightMotorName, String rearLeftMotorName, String rearRightMotorName) {
-        this.hardwareMap = hardwareMap;
-        initDriveMotors(frontLeftMotorName, frontRightMotorName, rearLeftMotorName, rearRightMotorName);
-        initImu();
-    }
-
-    // defaults to motor names "frontLeft_motor" "frontRight_motor" "rearLeft_motor"
-    //"rearRight_motor"
     public void initialize(HardwareMap hardwareMap) {
-        this.initialize(hardwareMap, "front_left_drive", "front_right_drive", "back_left_drive", "back_right_drive");
-    }
-
-    private void initDriveMotors(String frontLeftMotorName, String frontRightMotorName, String rearLeftMotorName, String rearRightMotorName) {
-        frontLeftDrive = hardwareMap.get(DcMotor.class, frontLeftMotorName);
-        frontRightDrive = hardwareMap.get(DcMotor.class, frontRightMotorName);
-        rearLeftDrive = hardwareMap.get(DcMotor.class, rearLeftMotorName);
-        rearRightDrive = hardwareMap.get(DcMotor.class, rearRightMotorName);
+        frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left_drive");
+        frontRightDrive = hardwareMap.get(DcMotor.class, "front_right_drive");
+        rearLeftDrive = hardwareMap.get(DcMotor.class, "back_left_drive");
+        rearRightDrive = hardwareMap.get(DcMotor.class, "back_right_drive");
 
         frontLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
         rearLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -40,9 +29,7 @@ public class MecanumDrive {
         frontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rearLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rearRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-    }
 
-    private void initImu() {
         imu = hardwareMap.get(IMU.class, "imu");
 
         RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
@@ -66,21 +53,37 @@ public class MecanumDrive {
         maxPower = Math.max(maxPower, Math.abs(frontRightPower));
         maxPower = Math.max(maxPower, Math.abs(rearRightPower));
 
-        this.frontLeftDrive.setPower(maxSpeed * (frontLeftPower/ maxPower));
-        this.rearRightDrive.setPower(maxSpeed * (rearRightPower/ maxPower));
-        this.rearLeftDrive.setPower(maxSpeed * (rearLeftPower/ maxPower));
-        this.frontRightDrive.setPower(maxSpeed * (frontRightPower/ maxPower));
+        this.frontLeftDrive.setPower(maxSpeed * (frontLeftPower / maxPower));
+        this.rearRightDrive.setPower(maxSpeed * (rearRightPower / maxPower));
+        this.rearLeftDrive.setPower(maxSpeed * (rearLeftPower / maxPower));
+        this.frontRightDrive.setPower(maxSpeed * (frontRightPower / maxPower));
+    }
+
+    public void driveFieldRelative(double forward, double strafe, double rotate) {
+        double theta = Math.atan2(forward, strafe);
+        double r = Math.hypot(strafe, forward);
+
+        theta = AngleUnit.normalizeRadians(theta -
+                imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));
+
+        double newForward = r * Math.sin(theta);
+        double newStrafe = r * Math.cos(theta);
+
+        this.drive(newForward, newStrafe, rotate);
     }
 
     public void powerFrontLeftMotor(double power) {
         frontLeftDrive.setPower(power);
     }
+
     public void powerFrontRightMotor(double power) {
         frontRightDrive.setPower(power);
     }
+
     public void powerRearLeftMotor(double power) {
         rearLeftDrive.setPower(power);
     }
+
     public void powerRearRightMotor(double power) {
         rearRightDrive.setPower(power);
     }

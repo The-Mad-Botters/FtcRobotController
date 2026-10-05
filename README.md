@@ -5,6 +5,11 @@ This repository contains the public FTC SDK for the BIOBUZZ (2026-2027) competit
 ## Welcome!
 This GitHub repository contains the source code that is used to build an Android app to control a *FIRST* Tech Challenge competition robot.  To use this SDK, download/clone the entire project to your local computer.
 
+## Team code and learning materials
+
+Current robot code lives in `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/teamcode`.
+Educational examples live in the sibling `education` Java package. Start with the [learning materials index](education/README.md) for the Java primer, workshop, and simulator lessons.
+
 ## Requirements
 To use this Android Studio project, you will need Android Studio Narwhal 3 Feature Drop or later.
 
