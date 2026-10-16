@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.AprilTagsWebCam;
@@ -15,6 +16,8 @@ public class TeleOp_Starter extends OpMode {
     protected MecanumDrive driver = new MecanumDrive();
     protected AprilTagsWebCam aprilTagsWebCam = new AprilTagsWebCam();
 
+    Servo myServo;
+
     // April Tag IDs for Red and Blue goals/targets
     final protected int RED_TAG_ID = 24;
     final protected int BLUE_TAG_ID = 20;
@@ -26,6 +29,8 @@ public class TeleOp_Starter extends OpMode {
 
     @Override
     public void init() {
+        myServo = hardwareMap.get(Servo.class, "right_servo");
+
         // Initialize drive motors and webcam
         driver.initialize(hardwareMap);
         aprilTagsWebCam.initialize(hardwareMap, telemetry);
@@ -49,16 +54,18 @@ public class TeleOp_Starter extends OpMode {
 
     @Override
     public void loop() {
+
+
         //----------------------------------------
         // Target Selection
         // Gamepad1 X: Blue target
         // Gamepad1 B: Red target
         //----------------------------------------
-        if (gamepad1.xWasReleased()) {
-            targetTagId = BLUE_TAG_ID;
-        } else if (gamepad1.bWasReleased()) {
-            targetTagId = RED_TAG_ID;
-        }
+//        if (gamepad1.xWasReleased()) {
+//            targetTagId = BLUE_TAG_ID;
+//        } else if (gamepad1.bWasReleased()) {
+//            targetTagId = RED_TAG_ID;
+//        }
 
         if (targetTagId == BLUE_TAG_ID) {
             telemetry.addLine("\uD83D\uDFE6 \uD83D\uDFE6  BLUE TARGET \uD83D\uDFE6 \uD83D\uDFE6");

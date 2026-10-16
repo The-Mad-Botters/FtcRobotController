@@ -46,15 +46,16 @@ public class ServoTest2025RobotCode_TeleOp extends OpMode {
 
         if (gamepad1.x) {
             carousel.setPosition(0.5);
-        }
+        } else
         if (gamepad1.y) {
             carousel.setPosition(0.0);
         }
 
         if (gamepad1.a) {
             kicker.setPosition(0.5);
+        } else {
+            kicker.setPosition(0.0);
         }
-        kicker.setPosition(0.0);
         telemetry.update();
     }
 
