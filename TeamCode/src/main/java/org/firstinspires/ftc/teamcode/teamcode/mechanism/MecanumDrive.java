@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 public class MecanumDrive {
@@ -17,24 +18,26 @@ public class MecanumDrive {
     private IMU imu;
 
     public void initialize(HardwareMap hardwareMap) {
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left_drive");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "front_right_drive");
-        rearLeftDrive = hardwareMap.get(DcMotor.class, "back_left_drive");
-        rearRightDrive = hardwareMap.get(DcMotor.class, "back_right_drive");
+        frontLeftDrive = hardwareMap.get(DcMotor.class, "FLD");
+        frontRightDrive = hardwareMap.get(DcMotor.class, "FRD");
+        rearLeftDrive = hardwareMap.get(DcMotor.class, "BLD");
+        rearRightDrive = hardwareMap.get(DcMotor.class, "BRD");
 
         frontLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
-        rearLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        rearLeftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        rearRightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        frontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        frontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rearLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rearRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        frontLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rearLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rearRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         imu = hardwareMap.get(IMU.class, "imu");
 
         RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.UP,
-                RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD);
+                RevHubOrientationOnRobot.UsbFacingDirection.LEFT);
 
         imu.initialize(new IMU.Parameters(RevOrientation));
     }
@@ -86,5 +89,12 @@ public class MecanumDrive {
 
     public void powerRearRightMotor(double power) {
         rearRightDrive.setPower(power);
+    }
+
+    public void displayTelemetry(Telemetry telemetry) {
+        telemetry.addData("Front Left Encoder", frontLeftDrive.getCurrentPosition());
+        telemetry.addData("Front Right Encoder", frontRightDrive.getCurrentPosition());
+        telemetry.addData("Rear Left Encoder", rearLeftDrive.getCurrentPosition());
+        telemetry.addData("Rear Right Encoder", rearRightDrive.getCurrentPosition());
     }
 }

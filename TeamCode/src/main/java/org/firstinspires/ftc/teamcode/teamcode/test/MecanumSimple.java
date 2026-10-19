@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.MecanumDrive;
 
-@TeleOp(name = "Ed Tele Pinpoint", group = "Workshop")
+@TeleOp(name = "Ed-MecanumSimple", group = "Workshop")
 public class MecanumSimple extends OpMode {
     MecanumDrive drive = new MecanumDrive();
     GoBildaPinpointDriver pinpoint;
