@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.MecanumDrive;
 
-@TeleOp(name = "Ed-MecanumTestTeleOp", group = "Test")
-public class MecanumTestTeleOp extends OpMode {
+@TeleOp(name = "Ed-MecanumFieldOriented", group = "Test")
+public class MecanumFieldOriented extends OpMode {
 
     MecanumDrive drive = new MecanumDrive();
     double forward, strafe, rotate;
@@ -66,7 +66,7 @@ public class MecanumTestTeleOp extends OpMode {
             rotate = rotate / 2;
         }
 
-        // driver.drive(forward, strafe, rotate);
+        //drive.drive(forward, strafe, rotate);
         drive.driveFieldRelative(forward, strafe, rotate);
     }
 }
