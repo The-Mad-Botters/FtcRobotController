@@ -23,7 +23,7 @@ public class MecanumDrive {
         rearLeftDrive = hardwareMap.get(DcMotor.class, "BLD");
         rearRightDrive = hardwareMap.get(DcMotor.class, "BRD");
 
-        frontLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontLeftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
 //        rearLeftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
         rearLeftDrive.setDirection(DcMotorSimple.Direction.FORWARD);

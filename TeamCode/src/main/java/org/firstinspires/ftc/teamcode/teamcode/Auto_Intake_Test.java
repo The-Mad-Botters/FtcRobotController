@@ -15,12 +15,6 @@ public class Auto_Intake_Test extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            myIntake.setPower(0.5);
-            sleep(3000);
-            myIntake.setPower(0);
-            myIntake.setPower(-0.5);
-            sleep(3000);
-            myIntake.setPower(0);
         }
     }
 }
