@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.teamcode.paths;
 
-import static com.pedropathing.api.Paths.*;
 import com.pedropathing.api.Paths;
 
 import com.pedropathing.api.PoseFactory;
@@ -11,31 +10,33 @@ public class CalebBluePaths implements IPaths {
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(133.4583, 82.7465, 180);
-    private final Pose goToFirstShot = poseFactory.of(83.6079, 116.3943, 270);
-    private final Pose goToFirstShotControl1 = poseFactory.of(117.5035, 78.0053, 0);
-    private final Pose goToFirstShotControl2 = poseFactory.of(99.3585, 114.3386, 0);
-    private final Pose approachPollenStart = poseFactory.of(83.6079, 116.3943, 270);
-    private final Pose approachPollen = poseFactory.of(107.6748, 133.2781, 0);
-    private final Pose gatherPollen = poseFactory.of(131.2601, 133.1975, 0);
-    private final Pose goParkStart = poseFactory.of(131.2601, 133.1975, 0);
-    private final Pose goPark = poseFactory.of(132.3612, 47.6017, 180);
-    private final Pose goParkControl1 = poseFactory.of(113.3681, 97.9854, 0);
+    private final Pose start = poseFactory.of(7.8651, 58.5897, 0);
+    private final Pose toFirstShot = poseFactory.of(57.7549, 11.3262, 90);
+    private final Pose toFirstShotControl1 = poseFactory.of(27.5075, 58.6433, 0);
+    private final Pose toFirstShotControl2 = poseFactory.of(42.6447, 31.6452, 0);
+    private final Pose approachPollenLaneStart = poseFactory.of(57.7549, 11.3262, 90);
+    private final Pose approachPollenLane = poseFactory.of(28.5462, 8.4969, 180);
+    private final Pose pickUpBalls = poseFactory.of(11.9281, 8.558, 180);
+    private final Pose goParkStart = poseFactory.of(11.9281, 8.558, 180);
+    private final Pose goPark = poseFactory.of(10.5343, 94.7731, 0);
+    private final Pose goParkControl1 = poseFactory.of(36.5653, 65.9311, 0);
 
+    @Override
     public Pose getStartingPose() {
         return start;
     }
 
+    @Override
     public Path goToFirstShot() {
-        return Paths.curve(start, goToFirstShotControl1, goToFirstShotControl2, goToFirstShot).linear(start, goToFirstShot);
+        return Paths.curve(start, toFirstShotControl1, toFirstShotControl2, toFirstShot).linear(start, toFirstShot);
     }
 
     public Path approachPollen() {
-        return Paths.line(approachPollenStart, approachPollen).linear(approachPollenStart, approachPollen);
+        return Paths.line(approachPollenLaneStart, approachPollenLane).linear(approachPollenLaneStart, approachPollenLane);
     }
 
     public Path gatherPollen() {
-        return Paths.line(approachPollen, gatherPollen).constant(gatherPollen);
+        return Paths.line(approachPollenLane, pickUpBalls).constant(pickUpBalls);
     }
 
     public Path goPark() {

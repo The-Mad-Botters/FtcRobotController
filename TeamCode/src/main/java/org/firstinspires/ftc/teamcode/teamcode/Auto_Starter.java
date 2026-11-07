@@ -26,7 +26,6 @@ import org.firstinspires.ftc.teamcode.teamcode.paths.CalebBluePaths;
 import org.firstinspires.ftc.teamcode.teamcode.paths.IPaths;
 
 @Autonomous(name = "Caleb Blue", group = "BIO BUZZ")
-@Disabled
 public class Auto_Starter extends LinearOpMode {
     Intake myIntake;
     Arms myArms;
@@ -58,17 +57,17 @@ public class Auto_Starter extends LinearOpMode {
                     myShooter.flipperPosition(0);
                 }),
                 follow(follower, paths.approachPollen()),
-                instant(() -> {
-                    myIntake.turnOn();
-                }),
+//                instant(() -> {
+//                    myIntake.turnOn();
+//                }),
                 follow(
                   follower,
                   paths.gatherPollen()
                        .with(Constants.foresightConfig.maxPathSpeed.at(0.3))
                 ),
-                instant(() -> {
-                    myIntake.turnOff();
-                }),
+//                instant(() -> {
+//                    myIntake.turnOff();
+//                }),
                 follow(follower, paths.goPark())
         );
     }

@@ -20,7 +20,7 @@ import org.firstinspires.ftc.teamcode.teamcode.paths.CalebBluePaths;
 import org.firstinspires.ftc.teamcode.teamcode.paths.IPaths;
 import org.firstinspires.ftc.teamcode.teamcode.paths.ShortShootFirst;
 
-@Autonomous(name = "ShortShootFirst", group = "BIO BUZZ")
+@Autonomous(name = "Auto Shoot From Top", group = "BIO BUZZ")
 public class Auto_Starter_Short extends LinearOpMode {
     Intake myIntake;
     Arms myArms;
@@ -39,12 +39,13 @@ public class Auto_Starter_Short extends LinearOpMode {
     // Autonomous routine
     public Command autoRoutine() {
         return sequential(
+                waitMs(15 * 1000),
                 follow(follower, paths.goToFirstShot()),
                 instant(() -> {
                     myShooter.setPollenShooterPower(0.75);
                     myShooter.setNectarShooterPower(0.75);
                 }),
-                waitMs(1500),
+                waitMs(2000),
                 instant(() -> myShooter.flipperPosition(1)),
                 waitMs(2500),
                 instant(() -> {

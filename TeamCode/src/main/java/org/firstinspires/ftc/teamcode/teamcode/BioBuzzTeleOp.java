@@ -129,10 +129,12 @@ public class BioBuzzTeleOp extends OpMode {
         }
 
         if (shooterOn ) {
+            telemetry.addData("Shooter Wheel Is", "ON");
             myShooter.setNectarShooterPower(nectarShootPower);
             myShooter.setPollenShooterPower(pollenShootPower);
             myShooter.flipperPosition(gamepad2.right_trigger);
         } else if (shooterOn == false) {
+            telemetry.addData("Shooter Wheel Is", "OFF");
             myShooter.turnOffShooter();
         }
 
@@ -156,13 +158,13 @@ public class BioBuzzTeleOp extends OpMode {
             rotate = rotate / 2;
         }
 
-        if (useFieldOriented) {
-            telemetry.addData("Field Oriented Is", "ON");
-            drive.driveFieldRelative(forward, strafe, rotate);
-        } else {
+//        if (useFieldOriented) {
+//            telemetry.addData("Field Oriented Is", "ON");
+//            drive.driveFieldRelative(forward, strafe, rotate);
+//        } else {
             telemetry.addData("Field Oriented Is", "OFF");
             drive.drive(forward, strafe, rotate);
-        }
+//        }
 
         telemetry.update();
     }
