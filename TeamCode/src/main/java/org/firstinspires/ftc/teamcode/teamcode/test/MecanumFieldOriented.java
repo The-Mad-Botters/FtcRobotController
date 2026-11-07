@@ -1,13 +1,13 @@
-package org.firstinspires.ftc.teamcode.teamcode;
+package org.firstinspires.ftc.teamcode.teamcode.test;
 
-import static android.os.SystemClock.sleep;
-
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.MecanumDrive;
 
-@TeleOp(name = "Ed-MecanumFieldOriented", group = "Test")
+@TeleOp(name = "MecanumFieldOriented", group = "Test")
+@Disabled
 public class MecanumFieldOriented extends OpMode {
 
     MecanumDrive drive = new MecanumDrive();
@@ -19,8 +19,6 @@ public class MecanumFieldOriented extends OpMode {
     }
 
 
-    double motorRatioOffset = 1.0;
-
     @Override
     public void loop() {
         // Test each individual wheel by gamepad buttons when neither left/right sticks are
@@ -29,13 +27,7 @@ public class MecanumFieldOriented extends OpMode {
         //  Triangle: Front Right
         //  Cross: Rear Left
         //  Circle: Rear Right
-        if (gamepad1.dpad_up) {
-            motorRatioOffset += 0.1;
-            sleep(1000);
-        } else if (gamepad1.dpad_down) {
-            motorRatioOffset -= 0.1;
-            sleep(1000);
-        }
+
 
         if (gamepad1.left_stick_x + gamepad1.left_stick_y + gamepad1.right_stick_x == 0) {
             drive.displayTelemetry(telemetry);
@@ -43,12 +35,8 @@ public class MecanumFieldOriented extends OpMode {
             drive.powerFrontLeftMotor(gamepad1.square ? 0.5 : 0.0);
             drive.powerFrontRightMotor(gamepad1.triangle ? 0.5 : 0.0);
             drive.powerRearLeftMotor(gamepad1.cross ? 0.5 : 0.0);
+            drive.powerRearRightMotor(gamepad1.circle ? 0.5 : 0.0);
 
-            double rrmPower = (gamepad1.circle ? 0.5 : 0.0) * motorRatioOffset;
-            drive.powerRearRightMotor(rrmPower);
-
-            telemetry.addData("Motor Ratio Offset", motorRatioOffset);
-            telemetry.addData("RRM Power", rrmPower);
             telemetry.update();
             return;
         }

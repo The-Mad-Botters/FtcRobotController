@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.teamcode.test;
 
 import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -11,6 +12,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.MecanumDrive;
 
 @TeleOp(name = "Ed-MecanumSimple", group = "Workshop")
+@Disabled
 public class MecanumSimple extends OpMode {
     MecanumDrive drive = new MecanumDrive();
     GoBildaPinpointDriver pinpoint;
