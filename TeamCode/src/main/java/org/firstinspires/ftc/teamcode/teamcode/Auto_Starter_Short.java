@@ -39,11 +39,11 @@ public class Auto_Starter_Short extends LinearOpMode {
     // Autonomous routine
     public Command autoRoutine() {
         return sequential(
-                waitMs(15 * 1000),
+                waitMs(10 * 1000),
                 follow(follower, paths.goToFirstShot()),
                 instant(() -> {
-                    myShooter.setPollenShooterPower(0.75);
-                    myShooter.setNectarShooterPower(0.75);
+                    myShooter.setPollenShooterPower(0.70);
+//                    myShooter.setNectarShooterPower(0.70);
                 }),
                 waitMs(2000),
                 instant(() -> myShooter.flipperPosition(1)),

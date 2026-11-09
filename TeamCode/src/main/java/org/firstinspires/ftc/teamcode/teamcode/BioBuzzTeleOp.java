@@ -44,8 +44,8 @@ public class BioBuzzTeleOp extends OpMode {
         myArms.retract();
     }
 
-    double nectarShootPower= 0.75;
-    double pollenShootPower= 0.75;
+    double nectarShootPower= 0.0;
+    double pollenShootPower= 0.70;
 
     boolean IntakeOn = false;
     boolean leftArmExtended = false;
@@ -118,11 +118,12 @@ public class BioBuzzTeleOp extends OpMode {
             }
         }
 
-        if (gamepad2.dpadUpWasPressed()) {
-            nectarShootPower = Math.min(1.0, nectarShootPower + 0.01);
-        } else if (gamepad2.dpadDownWasPressed()) {
-            nectarShootPower = Math.max(0.0, nectarShootPower - 0.01);
-        } else if (gamepad2.dpadRightWasPressed()) {
+//        if (gamepad2.dpadUpWasPressed()) {
+//            nectarShootPower = Math.min(1.0, nectarShootPower + 0.01);
+//        } else if (gamepad2.dpadDownWasPressed()) {
+//            nectarShootPower = Math.max(0.0, nectarShootPower - 0.01);
+//        } else
+        if (gamepad2.dpadRightWasPressed()) {
             pollenShootPower = Math.min(1.0, pollenShootPower + 0.01);
         } else if (gamepad2.dpadLeftWasPressed()) {
             pollenShootPower = Math.max(0.0, pollenShootPower - 0.01);

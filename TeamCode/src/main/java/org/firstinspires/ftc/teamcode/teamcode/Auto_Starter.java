@@ -46,8 +46,8 @@ public class Auto_Starter extends LinearOpMode {
         return sequential(
                 follow(follower, paths.goToFirstShot()),
                 instant(() -> {
-                    myShooter.setPollenShooterPower(0.75);
-                    myShooter.setNectarShooterPower(0.75);
+                    myShooter.setPollenShooterPower(0.70);
+//                    myShooter.setNectarShooterPower(0.70);
                 }),
                 waitMs(1500),
                 instant(() -> myShooter.flipperPosition(1)),
