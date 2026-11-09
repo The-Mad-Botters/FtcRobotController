@@ -11,7 +11,6 @@ import org.firstinspires.ftc.teamcode.teamcode.mechanism.Shooter;
 @TeleOp(name = "TeleOp", group = "BIO BUZZ")
 public class BioBuzzTeleOp extends OpMode {
     Intake myIntake;
-    Arms myArms;
     Shooter myShooter;
 
 
@@ -20,7 +19,7 @@ public class BioBuzzTeleOp extends OpMode {
 
     public BioBuzzTeleOp() {
         myIntake = new Intake();
-        myArms = new Arms();
+
         myShooter = new Shooter();
     }
 
@@ -28,10 +27,9 @@ public class BioBuzzTeleOp extends OpMode {
     public void init() {
         drive.initialize(hardwareMap);
         myIntake.init(hardwareMap);
-        myArms.init(hardwareMap);
         myShooter.init(hardwareMap);
 
-        myArms.retract();
+
     }
 
     double nectarShootPower= 0.0;
@@ -68,31 +66,18 @@ public class BioBuzzTeleOp extends OpMode {
         //----------------------------
         // LEFT
         if(-gamepad2.left_stick_y > 0) {
-            myArms.extendLeft();
             leftArmExtended = true;
         }
         else if(-gamepad2.left_stick_y < 0) {
-            myArms.retractLeft();
             leftArmExtended = false;
         }
 
         // RIGHT
         if(-gamepad2.right_stick_y > 0) {
-            myArms.extendRight();
             rightArmExtended = true;
         }
         else if(-gamepad2.right_stick_y < 0) {
-            myArms.retractRight();
             rightArmExtended = false;
-        }
-
-        //----------------------------
-        // Only turn on sweeper if arms are extended
-        //----------------------------
-        if ((leftArmExtended || rightArmExtended) && IntakeOn) {
-            myArms.turnSweeperOn();
-        } else {
-            myArms.turnSweeperOff();
         }
 
         //----------------------------
