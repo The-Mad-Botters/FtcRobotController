@@ -11,9 +11,7 @@ public class PathSlideLeftFromSide implements IPaths {
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     private final Pose start = poseFactory.of(7.8651, 58.5897, 0);
-    private final Pose goPark = poseFactory.of(10.2432, 103.8263, 0);
-
-
+    private final Pose goPark = poseFactory.of(10.5056, 94.3733, 0);
 
     public Path goPark() {
         return Paths.line(start, goPark).linear(start, goPark);
