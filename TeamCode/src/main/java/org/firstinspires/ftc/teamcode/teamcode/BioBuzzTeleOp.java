@@ -14,16 +14,6 @@ public class BioBuzzTeleOp extends OpMode {
     Arms myArms;
     Shooter myShooter;
 
-    // pollen shooter port 0 control hub = pShooter
-    // 1 = nectar shooter = nShooter
-    // 2 = sweeper motor core hex motor = SM
-    // 3 = intake core hex = IM
-
-    // New Servos - nectar pollen pushers NK and PK
-
-    // arms - on stop, it retracts
-    // arms - motor rotation stops when retracted
-    // nectar and pollen shooter kicker using ->
 
     MecanumDrive drive = new MecanumDrive();
     double forward, strafe, rotate;
