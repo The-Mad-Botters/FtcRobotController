@@ -23,7 +23,6 @@ import org.firstinspires.ftc.teamcode.teamcode.paths.ShortShootFirst;
 @Autonomous(name = "Slide Left From Side", group = "BIO BUZZ")
 public class Auto_Slide_Left extends LinearOpMode {
     Intake myIntake;
-    Arms myArms;
     Shooter myShooter;
 
     private Follower follower;
@@ -31,7 +30,6 @@ public class Auto_Slide_Left extends LinearOpMode {
 
     public Auto_Slide_Left() {
         myIntake = new Intake();
-        myArms = new Arms();
         myShooter = new Shooter();
         paths = new PathSlideLeftFromSide();
     }
@@ -48,7 +46,6 @@ public class Auto_Slide_Left extends LinearOpMode {
 
         // we need to initialize our mechanisms
         myIntake.init(hardwareMap);
-        myArms.init(hardwareMap);
         myShooter.init(hardwareMap);
 
         Scheduler.reset();

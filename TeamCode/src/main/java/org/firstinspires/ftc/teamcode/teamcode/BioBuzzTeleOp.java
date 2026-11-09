@@ -36,8 +36,6 @@ public class BioBuzzTeleOp extends OpMode {
     double pollenShootPower= 0.70;
 
     boolean IntakeOn = false;
-    boolean leftArmExtended = false;
-    boolean rightArmExtended = false;
     boolean shooterOn = false;
     float LegPosition = 0;
     boolean useFieldOriented = false;
@@ -61,24 +59,6 @@ public class BioBuzzTeleOp extends OpMode {
             }
         }
 
-        //----------------------------
-        // Extend and Retract Arms
-        //----------------------------
-        // LEFT
-        if(-gamepad2.left_stick_y > 0) {
-            leftArmExtended = true;
-        }
-        else if(-gamepad2.left_stick_y < 0) {
-            leftArmExtended = false;
-        }
-
-        // RIGHT
-        if(-gamepad2.right_stick_y > 0) {
-            rightArmExtended = true;
-        }
-        else if(-gamepad2.right_stick_y < 0) {
-            rightArmExtended = false;
-        }
 
         //----------------------------
         // Turn On/Off Shooter Motors
