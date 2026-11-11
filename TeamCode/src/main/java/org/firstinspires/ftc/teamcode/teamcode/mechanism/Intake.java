@@ -16,5 +16,9 @@ public class Intake {
     }
     public void turnOff() {
         intakeMotor.setPower(0.0);
+
+    }
+    public void spitout(){
+        intakeMotor.setPower(-1);
     }
 }

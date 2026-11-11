@@ -11,8 +11,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.MecanumDrive;
 
-@TeleOp(name = "Ed-MecanumSimple", group = "Workshop")
-@Disabled
+@TeleOp(name = "TestMecanumDrive", group = "TEST")
+//@Disabled
 public class MecanumSimple extends OpMode {
     MecanumDrive drive = new MecanumDrive();
     GoBildaPinpointDriver pinpoint;
@@ -34,19 +34,19 @@ public class MecanumSimple extends OpMode {
     @Override
     public void loop() {
 
-//        // Test each individual wheel by gamepad buttons when neither left/right sticks are
-//        // being used. The expected button to wheel are
-//        //  Square: Front Left
-//        //  Triangle: Front Right
-//        //  Cross: Rear Left
-//        //  Circle: Rear Right
-//        if (gamepad1.left_stick_x + gamepad1.left_stick_y + gamepad1.right_stick_x == 0) {
-//            drive.powerFrontLeftMotor(gamepad1.square ? 0.5 : 0.0);
-//            drive.powerFrontRightMotor(gamepad1.triangle ? 0.5 : 0.0);
-//            drive.powerRearLeftMotor(gamepad1.cross ? 0.5 : 0.0);
-//            drive.powerRearRightMotor(gamepad1.circle ? 0.5 : 0.0);
-//            return;
-//        }
+        // Test each individual wheel by gamepad buttons when neither left/right sticks are
+        // being used. The expected button to wheel are
+        //  Square: Front Left
+        //  Triangle: Front Right
+        //  Cross: Rear Left
+        //  Circle: Rear Right
+        if (gamepad1.left_stick_x + gamepad1.left_stick_y + gamepad1.right_stick_x == 0) {
+            drive.powerFrontLeftMotor(gamepad1.square ? 0.5 : 0.0);
+            drive.powerFrontRightMotor(gamepad1.triangle ? 0.5 : 0.0);
+            drive.powerRearLeftMotor(gamepad1.cross ? 0.5 : 0.0);
+            drive.powerRearRightMotor(gamepad1.circle ? 0.5 : 0.0);
+            return;
+        }
 //
 //        //----------------------------
 //        // Drive Controls (Done)

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.teamcode.mechanism;
+package org.firstinspires.ftc.teamcode.teamcode.graveyard.decode2025.mechanism;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;

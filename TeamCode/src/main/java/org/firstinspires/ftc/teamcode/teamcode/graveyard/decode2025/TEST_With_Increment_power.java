@@ -7,8 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.AprilTagsWebCam;
-import org.firstinspires.ftc.teamcode.teamcode.mechanism.Carousel;
-import org.firstinspires.ftc.teamcode.teamcode.mechanism.Lift;
+import org.firstinspires.ftc.teamcode.teamcode.graveyard.decode2025.mechanism.*;
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.MecanumDrive;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 

@@ -58,6 +58,18 @@ public class BioBuzzTeleOp extends OpMode {
                 IntakeOn = false;
             }
         }
+        else if(gamepad2.bWasPressed())
+        {
+            if (IntakeOn== false)
+            {
+                myIntake.spitout();
+                IntakeOn = true;
+            }
+            else {
+            myIntake.turnOff();
+            IntakeOn = false;
+        }
+        }
 
 
         //----------------------------
@@ -86,7 +98,6 @@ public class BioBuzzTeleOp extends OpMode {
 
         if (shooterOn ) {
             telemetry.addData("Shooter Wheel Is", "ON");
-            myShooter.setNectarShooterPower(nectarShootPower);
             myShooter.setPollenShooterPower(pollenShootPower);
             myShooter.flipperPosition(gamepad2.right_trigger);
         } else if (shooterOn == false) {
