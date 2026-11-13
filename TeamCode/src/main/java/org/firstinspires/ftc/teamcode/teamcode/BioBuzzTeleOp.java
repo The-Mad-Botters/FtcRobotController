@@ -33,7 +33,7 @@ public class BioBuzzTeleOp extends OpMode {
     }
 
     double nectarShootPower= 0.0;
-    double pollenShootPower= 0.70;
+    double pollenShootPower= 0.53;
 
     boolean IntakeOn = false;
     boolean shooterOn = false;
@@ -42,6 +42,12 @@ public class BioBuzzTeleOp extends OpMode {
 
     @Override
     public void loop() {
+
+        telemetry.addData("pidCoefficients.p", myShooter.pidCoefficients.p);
+        telemetry.addData("pidCoefficients.i", myShooter.pidCoefficients.i);
+        telemetry.addData("pidCoefficients.d", myShooter.pidCoefficients.d);
+        telemetry.addData("PID f", myShooter.f);
+        telemetry.addData("RPM",myShooter.getRpm());
 
         //----------------------------
         // Turn On/Off Intake and Sweeper Motors
