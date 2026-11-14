@@ -42,7 +42,7 @@ public class Shooter {
     public static double RPM_TOLERANCE = 75;
 
     // Flipper servo positions (same numbers TeleOp has always used).
-    public static double FLIPPER_OPEN_POS = 1.0;
+    public static double FLIPPER_OPEN_POS = 0.3;
     public static double FLIPPER_CLOSED_POS = 0.0;
 
     // How long (milliseconds) to wait for the flywheel to reach speed before each ball.
@@ -84,7 +84,7 @@ public class Shooter {
     public double f = 0.0009434;
     public PIDCoefficients pidCoefficients = new PIDCoefficients(
             115,
-            1.10,
+            1.00,
             3.0);
 //    public PIDCoefficients pidCoefficients = new PIDCoefficients(
 //            100,
@@ -100,7 +100,6 @@ public class Shooter {
                 pidCoefficients.i,
                 pidCoefficients.d,
                 f);
-
 
         pollenFlipper = this.hardwareMap.get(Servo.class, "pFlipper");
 

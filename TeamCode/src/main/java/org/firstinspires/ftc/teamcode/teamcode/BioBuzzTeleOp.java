@@ -28,17 +28,12 @@ public class BioBuzzTeleOp extends OpMode {
         drive.initialize(hardwareMap);
         myIntake.init(hardwareMap);
         myShooter.init(hardwareMap);
-
-
     }
 
-    double nectarShootPower= 0.0;
-    double pollenShootPower= 0.53;
+    double pollenShootPower= 0.55;
 
-    boolean IntakeOn = false;
     boolean shooterOn = false;
-    float LegPosition = 0;
-    boolean useFieldOriented = false;
+    boolean useFieldOriented = true;
 
     @Override
     public void loop() {
@@ -52,36 +47,18 @@ public class BioBuzzTeleOp extends OpMode {
         //----------------------------
         // Turn On/Off Intake and Sweeper Motors
         //----------------------------
-        if(gamepad2.aWasPressed())
-        {
-            if(IntakeOn == false)
-            {
-                myIntake.turnOn();
-                IntakeOn = true;
-            }
-            else {
-                myIntake.turnOff();
-                IntakeOn = false;
-            }
+        if(gamepad2.a) {
+            myIntake.turnOn();
         }
-        else if(gamepad2.bWasPressed())
-        {
-            if (IntakeOn== false)
-            {
-                myIntake.spitout();
-                IntakeOn = true;
-            }
-            else {
+        else if(gamepad2.b) {
+            myIntake.spitout();
+        } else {
             myIntake.turnOff();
-            IntakeOn = false;
         }
-        }
-
 
         //----------------------------
         // Turn On/Off Shooter Motors
         //----------------------------
-
         if(gamepad2.rightBumperWasPressed()) {
             if (shooterOn) {
                 shooterOn = false;
@@ -91,27 +68,29 @@ public class BioBuzzTeleOp extends OpMode {
             }
         }
 
-//        if (gamepad2.dpadUpWasPressed()) {
-//            nectarShootPower = Math.min(1.0, nectarShootPower + 0.01);
-//        } else if (gamepad2.dpadDownWasPressed()) {
-//            nectarShootPower = Math.max(0.0, nectarShootPower - 0.01);
-//        } else
         if (gamepad2.dpadRightWasPressed()) {
             pollenShootPower = Math.min(1.0, pollenShootPower + 0.01);
         } else if (gamepad2.dpadLeftWasPressed()) {
             pollenShootPower = Math.max(0.0, pollenShootPower - 0.01);
         }
 
+
         if (shooterOn ) {
             telemetry.addData("Shooter Wheel Is", "ON");
             myShooter.setPollenShooterPower(pollenShootPower);
-            myShooter.flipperPosition(gamepad2.right_trigger);
+            // myShooter.flipperPosition(gamepad2.right_trigger);
+            if (gamepad2.right_trigger > 0) {
+                myShooter.openFlipper();
+                myIntake.turnOn(); //.turnOnForShooting();
+            } else {
+                myShooter.closeFlipper();
+                //myIntake.turnOff();
+            }
         } else if (shooterOn == false) {
             telemetry.addData("Shooter Wheel Is", "OFF");
             myShooter.turnOffShooter();
         }
 
-        telemetry.addData("nectarShootPower", nectarShootPower);
         telemetry.addData("pollenShooterPower", pollenShootPower);
 
         //----------------------------
@@ -131,14 +110,42 @@ public class BioBuzzTeleOp extends OpMode {
             rotate = rotate / 2;
         }
 
-//        if (useFieldOriented) {
-//            telemetry.addData("Field Oriented Is", "ON");
-//            drive.driveFieldRelative(forward, strafe, rotate);
-//        } else {
+        if (useFieldOriented) {
+            telemetry.addData("Field Oriented Is", "ON");
+            drive.driveFieldRelative(forward, strafe, rotate);
+        } else {
             telemetry.addData("Field Oriented Is", "OFF");
             drive.drive(forward, strafe, rotate);
-//        }
+        }
 
         telemetry.update();
     }
 }
+
+//
+// boolean IntakeOn = false;
+// ...
+//        if(gamepad2.a)
+//        {
+//            if(IntakeOn == false)
+//            {
+//                myIntake.turnOn();
+//                IntakeOn = true;
+//            }
+//            else {
+//                myIntake.turnOff();
+//                IntakeOn = false;
+//            }
+//        }
+//        else if(gamepad2.bWasPressed())
+//        {
+//            if (IntakeOn== false)
+//            {
+//                myIntake.spitout();
+//                IntakeOn = true;
+//            }
+//            else {
+//                myIntake.turnOff();
+//                IntakeOn = false;
+//            }
+//        }

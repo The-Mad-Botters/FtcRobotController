@@ -12,8 +12,13 @@ public class Intake {
     }
 
     public void turnOn(){
+        intakeMotor.setPower(1.0);
+    }
+
+    public void turnOnForShooting(){
         intakeMotor.setPower(0.5);
     }
+
     public void turnOff() {
         intakeMotor.setPower(0.0);
 
