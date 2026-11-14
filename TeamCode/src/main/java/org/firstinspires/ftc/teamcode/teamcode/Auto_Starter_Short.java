@@ -10,6 +10,7 @@ import com.pedropathing.follower.Follower;
 import com.pedropathing.ivy.Command;
 import com.pedropathing.ivy.Scheduler;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.pedro.Constants;
@@ -20,7 +21,8 @@ import org.firstinspires.ftc.teamcode.teamcode.paths.CalebBluePaths;
 import org.firstinspires.ftc.teamcode.teamcode.paths.IPaths;
 import org.firstinspires.ftc.teamcode.teamcode.paths.ShortShootFirst;
 
-@Autonomous(name = "Auto Shoot From Top", group = "BIO BUZZ")
+@Autonomous(name = "Auto Shoot From Top", group = "Comp Nov 6")
+@Disabled
 public class Auto_Starter_Short extends LinearOpMode {
     Intake myIntake;
     Arms myArms;

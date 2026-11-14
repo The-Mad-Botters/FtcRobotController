@@ -10,6 +10,7 @@ import com.pedropathing.follower.Follower;
 import com.pedropathing.ivy.Command;
 import com.pedropathing.ivy.Scheduler;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.pedro.Constants;
@@ -20,7 +21,8 @@ import org.firstinspires.ftc.teamcode.teamcode.paths.IPaths;
 import org.firstinspires.ftc.teamcode.teamcode.paths.PathSlideLeftFromSide;
 import org.firstinspires.ftc.teamcode.teamcode.paths.ShortShootFirst;
 
-@Autonomous(name = "Slide Left From Side", group = "BIO BUZZ")
+@Autonomous(name = "Slide Left From Side", group = "Comp Nov 6")
+@Disabled
 public class Auto_Slide_Left extends LinearOpMode {
     Intake myIntake;
     Shooter myShooter;

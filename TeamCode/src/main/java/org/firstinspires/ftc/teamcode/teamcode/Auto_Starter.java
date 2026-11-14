@@ -8,6 +8,7 @@ import static com.pedropathing.ivy.commands.Commands.*;
 import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.pedro.Constants;
@@ -17,7 +18,8 @@ import org.firstinspires.ftc.teamcode.teamcode.mechanism.Shooter;
 import org.firstinspires.ftc.teamcode.teamcode.paths.CalebBluePaths;
 import org.firstinspires.ftc.teamcode.teamcode.paths.IPaths;
 
-@Autonomous(name = "Caleb Blue", group = "BIO BUZZ")
+@Autonomous(name = "Caleb Blue", group = "Comp Nov 6")
+@Disabled
 public class Auto_Starter extends LinearOpMode {
     Intake myIntake;
     Arms myArms;
@@ -38,19 +40,19 @@ public class Auto_Starter extends LinearOpMode {
         return sequential(
                 follow(follower, paths.goToFirstShot()),
                 instant(() -> {
-                    myShooter.setPollenShooterPower(0.70);
+                    myShooter.setPollenShooterPower(0.55);
                 }),
                 waitMs(1500),
-                instant(() -> myShooter.flipperPosition(1)),
+                instant(() -> myShooter.openFlipper()),
                 waitMs(2500),
                 instant(() -> {
                     myShooter.turnOffShooter();
-                    myShooter.flipperPosition(0);
+                    myShooter.closeFlipper();
                 }),
                 follow(follower, paths.approachPollen()),
-//                instant(() -> {
-//                    myIntake.turnOn();
-//                }),
+                instant(() -> {
+                    myIntake.turnOn();
+                }),
                 follow(
                   follower,
                   paths.gatherPollen()

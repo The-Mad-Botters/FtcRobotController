@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.teamcode.mechanism.Intake;
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.MecanumDrive;
 import org.firstinspires.ftc.teamcode.teamcode.mechanism.Shooter;
 
-@TeleOp(name = "TeleOp", group = "BIO BUZZ")
+@TeleOp(name = "TeleOp", group = "Comp Nov 14")
 public class BioBuzzTeleOp extends OpMode {
     Intake myIntake;
     Shooter myShooter;
